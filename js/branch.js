@@ -20,35 +20,35 @@ function Photos(name, branch, fileExtensions = 'jpg') {
 }
 
 
-let army = localStorage.getItem('army');
-let marines = localStorage.getItem('marines');
-let navy = localStorage.getItem('navy');
-let airforce = localStorage.getItem('airforce');
+// let army = localStorage.getItem('army');
+// let marines = localStorage.getItem('marines');
+// let navy = localStorage.getItem('navy');
+// let airforce = localStorage.getItem('airforce');
 
 // if (retrievedPhotos) {
 //   let parsedProducts = JSON.parse(retrievedPhotos);
 //   allPhotos = parsedProducts;
 // } else {
-new Photos('moppingarmy', 'army');
-new Photos('crayolapopsiclesmarinecorps', 'marine corps');
-new Photos('chairairforce', 'airforce');
-new Photos('subnavy', 'navy');
-new Photos('airplaneairforce', 'airforce');
-new Photos('boatworkernavy', 'navy');
-new Photos('flakjacketmarinecorps', 'marine corps');
-new Photos('cookarmy', 'army');
-new Photos('boatnavy', 'navy');
-new Photos('copairforce', 'airforce');
-new Photos('swimmingMarineCorps', 'marine corps');
-new Photos('helicopterarmy', 'army');
-new Photos('boatyardnavy', 'navy');
-new Photos('dininghallairforce', 'airforce');
-new Photos('hikingmarinecorps', 'marine corps');
-new Photos('hrarmy', 'army');
-new Photos('mechanicmarinecorps', 'marine corps');
-new Photos('refuelingairplaneairforce', 'airforce');
-new Photos('scubadivernavy', 'navy');
-new Photos('truckdriverArmy', 'army');
+new Photos('mopping', 'army');
+new Photos('crayolapopsicles', 'marine corps');
+new Photos('chair', 'airforce');
+new Photos('sub', 'navy');
+new Photos('airplane', 'airforce');
+new Photos('boatworker', 'navy');
+new Photos('flakjacket', 'marine corps');
+new Photos('cook', 'army');
+new Photos('boat', 'navy');
+new Photos('cop', 'airforce');
+new Photos('swimming', 'marine corps');
+new Photos('helicopter', 'army');
+new Photos('boatyard', 'navy');
+new Photos('dininghall', 'airforce');
+new Photos('hiking', 'marine corps');
+new Photos('hr', 'army');
+new Photos('mechanic', 'marine corps');
+new Photos('refuelingairplane', 'airforce');
+new Photos('scubadiver', 'navy');
+new Photos('truckdriver', 'army');
 // }
 
 function renderedPhotos() {
@@ -99,6 +99,7 @@ function handleClick(event) {
     localStorage.setItem('airforce', airforceClick);
     localStorage.setItem('clickTotal', totalClicks);
   }
+
   if (event.target.title === myContainer) {
     alert('Click on the best image');
   }
