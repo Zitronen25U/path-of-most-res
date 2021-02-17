@@ -27,7 +27,7 @@ h2{
 .indexImg{
   display:inline-block;
 }
-
+/* 
 #imgOne{
   margin-left: 25%;
   margin-top: 3%;
@@ -44,4 +44,29 @@ h2{
 
 #imgFour{
   margin-left: 10%;
+} */
+
+#img-container{
+  width: 70vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 65px;
+}
+
+#btn{
+  display: flex;
+  justify-self: center;
+}
+
+#One{
+  display: flex;
+  justify-content: center;
+  gap: 65px;
+}
+
+#Two{
+  display: flex;
+  justify-content: center;
+  gap: 65px;
 }
