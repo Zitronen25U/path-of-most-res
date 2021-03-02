@@ -11,4 +11,4 @@ Path of Most Resistance is an app designed to give students or professionals a l
 
 ### Wireframe for Projects
 
-<img src="../img/wireframes.png" alt="wireframe of path of most resistance project">
+![wireframe path of most resistance](/img/wireframes.png)
