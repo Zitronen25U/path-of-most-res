@@ -34,7 +34,7 @@ header{
 }
 #brianImg{
   float: left;
-  margin-right: 1%;
+  margin: 1%;
 }
 #brianTxt{
   text-align: center;
@@ -44,7 +44,7 @@ header{
 
 #donImg{
   float: left;
-  margin-right: 1%;
+  margin: 1%;
 }
 #donTxt{
   text-align: center;
@@ -54,7 +54,7 @@ header{
 
 #pjImg{
   float: left;
-  margin-right: 1%;
+  margin: 1%;
 }
 #pjTxt{
   text-align: center;
@@ -64,10 +64,11 @@ header{
 
 #wenImg{
   float: left;
-  margin-right: 1%;
+  margin: 1%;;
 }
 #wenTxt{
   text-align: center;
   margin-top: 3%;
   font-style: italic;
+  margin-bottom: 1%;
 }
