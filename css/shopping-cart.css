@@ -37,17 +37,33 @@ div.details > h2 {
   font-weight: bold;
 }
 
-div.price {
+div.product {
   margin-top: 50px;
   display: flex;
   justify-content: space-between;
 }
 
-div.price > select {
+div.product > select {
   width: 120px;
   padding: 3px;
 }
 
-div.price > div {
+div.product > div {
   padding: 6px;
+}
+
+.details > p {
+  margin-top: 10px;
+  height: 100px;
+  overflow: scroll;
+  line-height: 130%;
+  font-size: 14px;
+}
+
+.add-product {
+  margin-top: 15px;
+  background-color: gray;
+  padding: 10px;
+  width: max-content;
+  border-radius: 5px;
 }
