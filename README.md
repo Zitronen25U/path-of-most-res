@@ -13,7 +13,10 @@ Path of Most Resistance is an app designed to give students or professionals a l
 
 ![wireframe path of most resistance](/img/wireframes.png)
 
-
 ### UML for Project
 
 ![UML for project](/img/UML.png)
+
+## Sources:
+
+Google Fonts: [Vernon Adams](https://fonts.google.com/specimen/Anton?preview.text_type=custom#license)
