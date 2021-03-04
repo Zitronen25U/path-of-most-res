@@ -1,5 +1,11 @@
-/* HEADER */
+/* BODY */
 
+body{
+  background-color: bisque;
+}
+
+
+/* HEADER */
 h1{
   text-align: center;
   font-size: 3em;
@@ -7,3 +13,13 @@ h1{
   font-style: 
 }
 
+#returnLogo{
+  float: left;
+}
+/* MAIN */
+
+h2{
+  text-align: center;
+  font-size: 2em;
+  margin-top: 3%;
+}
