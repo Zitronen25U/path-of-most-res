@@ -1,0 +1,53 @@
+body {
+  background-color: azure;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 960px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bolder;
+  text-align: center;
+  margin: 20px 0;
+  padding: 5px;
+}
+
+section {
+  margin: auto;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 3px solid bisque;
+  width: 600px;
+}
+
+div.details {
+  margin-left: 20px;
+  padding: 10px;
+  width: 40%;
+}
+
+div.details > h2 {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+div.price {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.price > select {
+  width: 120px;
+  padding: 3px;
+}
+
+div.price > div {
+  padding: 6px;
+}
