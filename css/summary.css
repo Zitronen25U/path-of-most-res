@@ -1,0 +1,46 @@
+.branchpics {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+ul {
+  width: 250px;
+  height: 250px;
+  background-color: rgb(167, 167, 167);
+}
+
+li {
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 15px;
+  text-align: center;
+}
+
+p {
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
+
+#gearupbutton {
+  background-color: rgb(28, 160, 236);
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+  line-height: 50px;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  width: max-content;
+}
+
+
+
