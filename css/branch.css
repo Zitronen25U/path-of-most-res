@@ -23,3 +23,25 @@ h2{
   font-size: 2em;
   margin-top: 3%;
 }
+
+.indexImg{
+  display:inline-block;
+}
+
+#imgOne{
+  margin-left: 25%;
+  margin-top: 3%;
+}
+
+#imgTwo{
+  margin-left: 10%;
+}
+
+#imgThree{
+  margin-top: 3%;
+  margin-left: 25%;
+}
+
+#imgFour{
+  margin-left: 10%;
+}
