@@ -1,13 +1,14 @@
 'use strict';
 
 // global variables
-let branch = 'USMC'; // this is from global variable
+let branch = 'USAF'; // this is from global variable
 const allProducts = [];
 const usaProducts = [];
 const usnProducts = [];
 const usafProducts = [];
 const usmcProducts = [];
 const select = document.getElementById('gears');
+const addToCart = document.getElementById('add-product');
 
 // constructor functions
 function Product(name, price, description, branch) {
@@ -39,7 +40,7 @@ Product.prototype.sortProduct = function() {
 	}
 }
 
-// helper functions
+/*-------- helper functions --------------------------------------------------------*/
 // render function for drop-down menu
 function renderDropdown(products) {
 	for (let product of products) {
@@ -66,7 +67,7 @@ function renderProductSection(productsArr) {
 	renderDefaultProduct(productsArr[0]); // when page loads, render the first product in the drop down.
 }
 
-// functions and event handlers
+/*-------- functions and event handlers --------------------------------------------------------*/
 function handleSelect(e) {
 	let productName = e.target.value;
 	let price = document.getElementById('price');
@@ -84,6 +85,7 @@ function handleSelect(e) {
 	}
 }
 
+/* -------------- Instantiate 24 products ---------------------------------------------------------*/
 new Product('air force cup 1', 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'USAF');
 new Product('air force pt shirt 1 (black)', 20, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'USAF');
 new Product('air force pt shirt 1 (grey)', 20, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'USAF');
@@ -109,6 +111,7 @@ new Product('usmc pt shorts 1 black', 20, 'Lorem ipsum dolor sit amet, consectet
 new Product('usmc pt shorts 1 green', 20, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'USMC');
 new Product('usmc shaker cup 1', 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'USMC');
 
+/*-------- Excutable codes ----------------------------------------------------------------------*/
 // only render branch related products out of all products
 switch (branch) {
 	case 'USA':
@@ -127,5 +130,8 @@ switch (branch) {
 		console.log('Should not be any errors.');
 }
 
-// add event listener to select element
+// render table for cart preview
+
+/*-------- Event Listener --------------------------------------------------------------------*/
 select.addEventListener('change', handleSelect);
+// addToCart.addEventListener('click', handleAdd);
