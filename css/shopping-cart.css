@@ -23,13 +23,13 @@ section {
   width: 600px;
 }
 
-div.details {
+div#details {
   margin-left: 20px;
   padding: 10px;
   width: 40%;
 }
 
-div.details > h2 {
+div#details > h2 {
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -37,22 +37,22 @@ div.details > h2 {
   font-weight: bold;
 }
 
-div.product {
+div#product {
   margin-top: 50px;
   display: flex;
   justify-content: space-between;
 }
 
-div.product > select {
+div#product > select {
   width: 120px;
   padding: 3px;
 }
 
-div.product > div {
+div#product > div {
   padding: 6px;
 }
 
-.details > p {
+#details > p {
   margin-top: 10px;
   height: 100px;
   overflow: scroll;
@@ -60,7 +60,7 @@ div.product > div {
   font-size: 14px;
 }
 
-.add-product {
+#add-product {
   margin-top: 15px;
   background-color: gray;
   padding: 10px;
