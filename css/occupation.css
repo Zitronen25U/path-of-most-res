@@ -1,16 +1,13 @@
-h1 {
-  font-size: 2em;
-  text-align: center;
-  margin-bottom: 50px;
+#branchImage{
+  margin-top: 3%;
+  margin-left: 20%;
 }
 
-
-.topnav div:first-child {
-  margin-left: 35px;
-  float: left;
+#quizHolder{
+  margin-left: 33%;
+  margin-top: 3%;
 }
 
-.topnav div:nth-child(2) {
-  border: 2px solid black;
-  width: 50px;
+#quiz{
+  font-size: 1.5em;
 }

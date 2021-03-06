@@ -1,12 +1,13 @@
 'use strict';
 
 // global variables
-// myContainer = document.getElementById('submit');
+
 let allQuestions = [];
 let q1 = document.getElementById('question1');
 let q2 = document.getElementById('question2');
 let q3 = document.getElementById('question3');
 let q4 = document.getElementById('question4');
+let myContainer = document.getElementById('quiz');
 
 // constructors
 function Question(question1, question2, question3, question4, question5) {
@@ -26,13 +27,12 @@ let medicalQuestions = new Question('Do you like the idea of saving lives?', 'Do
 
 let specialForcesQuestions = new Question('Do you consider yourself "elite"?', 'Do you enjoy pushing yourself to your limits?', 'Do you like the idea of working with specialized teams to accomplish tasks that no one else can?', 'Do you like the idea of training foreign entities to defend themselves against the evils of the world?', 'Do you like the idea of testing the newest tactics, technologies, or equipment?');
 
-
-// function getRandomQuestionOne() {
-//   return Math.floor(Math.random() * allQuestions.length);
-// }
+// Renders
 
 function handleSubmit(event){
-  if ()
+  event.preventDefault();
+  let ans1 = event.onclick;
+  console.log(ans1);
 }
 
 function renderQuestions() {
@@ -41,7 +41,9 @@ function renderQuestions() {
     q2.textContent = allQuestions[1].question1;
     q3.textContent = allQuestions[2].question1;
     q4.textContent = allQuestions[3].question1;
+    handleSubmit();
   }
 }
 
 renderQuestions();
+myContainer.addEventListener('submit', handleSubmit);
