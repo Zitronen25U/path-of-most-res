@@ -7,6 +7,9 @@ let q1 = document.getElementById('question1');
 let q2 = document.getElementById('question2');
 let q3 = document.getElementById('question3');
 let q4 = document.getElementById('question4');
+let myForm = document.getElementById('quiz');
+let currentQuestionIndex = 2;
+let totalRound = 5;
 
 // constructors
 function Question(question1, question2, question3, question4, question5) {
@@ -32,16 +35,23 @@ let specialForcesQuestions = new Question('Do you consider yourself "elite"?', '
 // }
 
 function handleSubmit(event){
-  // if ()
-}
-
-function renderQuestions() {
-  for (let i = 0; i < allQuestions.length; i++) {
-    q1.textContent = allQuestions[0].question1;
-    q2.textContent = allQuestions[1].question1;
-    q3.textContent = allQuestions[2].question1;
-    q4.textContent = allQuestions[3].question1;
+  event.preventDefault();
+  if (currentQuestionIndex <= totalRound) {
+    renderQuestions(`question${currentQuestionIndex}`);
+    currentQuestionIndex++;
+  } else {
+    myForm.removeEventListener('submit', handleSubmit);
   }
 }
 
-renderQuestions();
+function renderQuestions(question) {
+    q1.textContent = allQuestions[0][question];
+    q2.textContent = allQuestions[1][question];
+    q3.textContent = allQuestions[2][question];
+    q4.textContent = allQuestions[3][question];
+}
+
+renderQuestions('question1');
+
+// add event listener
+myForm.addEventListener('submit', handleSubmit);
