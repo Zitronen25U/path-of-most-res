@@ -13,7 +13,7 @@ h1 {
   padding: 5px;
 }
 
-section {
+section#products {
   margin: auto;
   display: flex;
   margin-top: 30px;
@@ -72,6 +72,12 @@ div#product > div {
   border-radius: 5px;
 }
 
+section#table {
+  margin: auto;
+  display: none;
+  width: max-content;
+}
+
 table {
   border: 3px solid bisque;
   margin-top: 30px;
@@ -83,4 +89,20 @@ table {
 th {
   border: 3px solid black;
   padding: 5px;
+}
+
+td {
+  margin: auto;
+  border: 3px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+div#update-cart {
+  float: right;
+  margin-top: 10px;
+  background-color: gray;
+  padding: 10px;
+  width: max-content;
+  border-radius: 5px;
 }
