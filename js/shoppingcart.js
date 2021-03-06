@@ -2,6 +2,7 @@
 
 // global variables
 let branch = 'USAF'; // this is from global variable
+let currentProduct = {};
 const allProducts = [];
 const usaProducts = [];
 const usnProducts = [];
@@ -65,9 +66,11 @@ function renderDefaultProduct(product) {
 function renderProductSection(productsArr) {
 	renderDropdown(productsArr);
 	renderDefaultProduct(productsArr[0]); // when page loads, render the first product in the drop down.
+	currentProduct = productsArr[0];
 }
 
 /*-------- functions and event handlers --------------------------------------------------------*/
+// event handler for choosing a product from the drop-down menu
 function handleSelect(e) {
 	let productName = e.target.value;
 	let price = document.getElementById('price');
@@ -76,13 +79,20 @@ function handleSelect(e) {
 	let img = document.getElementById('product-image');
 	for (let product of allProducts) {
 		if (productName === product.name) {
+			currentProduct = product;
 			price.textContent = `$ ${product.price}`;
 			productTitle.textContent = productName;
 			description.textContent = product.description;
 			img.setAttribute('src', product.img);
 			img.setAttribute('alt', product.name);
+			break;
 		}
 	}
+}
+
+// event handler for clicking the 'add to cart' button
+function handleAdd(e) {
+	console.log(currentProduct);
 }
 
 /* -------------- Instantiate 24 products ---------------------------------------------------------*/
@@ -134,4 +144,4 @@ switch (branch) {
 
 /*-------- Event Listener --------------------------------------------------------------------*/
 select.addEventListener('change', handleSelect);
-// addToCart.addEventListener('click', handleAdd);
+addToCart.addEventListener('click', handleAdd);
