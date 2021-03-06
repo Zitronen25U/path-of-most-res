@@ -61,9 +61,6 @@ function addPFTStandards() {
   }
 }
 
-addPFTStandards();
-
-
 function addOccupationPicture() {
   let p = document.getElementById('occupationphotos')
   //NEED VARIABLE SET TO userOccupation!
@@ -72,9 +69,7 @@ function addOccupationPicture() {
   p.innerHTML = img;
 }
 
-addOccupationPicture();
-
-let aviationDescription = "Military aviation comprises military aircraft and other flying machines for the purposes of conducting or enabling aerial warfare, including national airlift (air cargo) capacity to provide logistical supply to forces stationed in a war theater or along a front. Airpower includes the national means of conducting such warfare, including the intersection of transport and warcraft. Military aircraft include bombers, fighters, transports, trainer aircraft, and reconnaissance aircraft."
+let aviationDescription = `Military aviation comprises military aircraft and other flying machines for the purposes of conducting or enabling aerial warfare, including national airlift (air cargo) capacity to provide logistical supply to forces stationed in a war theater or along a front. Airpower includes the national means of conducting such warfare, including the intersection of transport and warcraft. Military aircraft include bombers, fighters, transports, trainer aircraft, and reconnaissance aircraft.`
 
 let combatArmsDescription = "Combat arms (or fighting arms in non-American parlance) is a collective name for troops within national armed forces which participate in direct tactical ground combat. In general they include units that carry or employ a weapon system, such as infantry, cavalry, and artillery units. The use of multiple combat arms in mutually supporting ways is known as combined arms."
 
@@ -84,4 +79,19 @@ let medicalDescription = "A medical specialty, specifically a branch of occupati
 
 let specialForcesDescription = "Military activities conducted by specially designated, organized, trained, and equipped forces, manned with selected personnel, using unconventional tactics, techniques, and modes of employment"
 
-let allOccupationDescriptions = [aviationDescription, combatArmsDescription, logisticsDescription, medicalDescription, specialForcesDescription]
+// Add Description of the Occupation to the DOM
+function addOccupationDescription() {
+  let h2 = document.getElementById('occupationdescription');
+  let p = document.createElement('p');
+  // p.textContent = `${userOccupation}Description`
+  p.innerHTML = aviationDescription
+  h2.appendChild(p);
+}
+
+function renderAll() {
+  addOccupationDescription();
+  addOccupationPicture();
+  addPFTStandards();
+}
+
+renderAll();
