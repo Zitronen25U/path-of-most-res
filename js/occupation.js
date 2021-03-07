@@ -3,6 +3,7 @@
 // global variables
 
 let allQuestions = [];
+let branchImages = [];
 let q1 = document.getElementById('question1');
 let q2 = document.getElementById('question2');
 let q3 = document.getElementById('question3');
@@ -11,6 +12,7 @@ let combatArmsCounter = 0;
 let aviationCounter = 0;
 let medicalCounter = 0;
 let specialForcesCounter = 0;
+
 
 
 let myForm = document.getElementById('quiz');
@@ -36,6 +38,15 @@ let medicalQuestions = new Question('Do you like the idea of saving lives?', 'Do
 let specialForcesQuestions = new Question('Do you consider yourself "elite"?', 'Do you enjoy pushing yourself to your limits?', 'Do you like the idea of working with specialized teams to accomplish tasks that no one else can?', 'Do you like the idea of training foreign entities to defend themselves against the evils of the world?', 'Do you like the idea of testing the newest tactics, technologies, or equipment?');
 
 // Renders
+
+var retrieveResults = localStorage.getItem('branch');
+let parsedResults = JSON.parse(retrieveResults);
+
+function branchPicture(){
+  if (parsedResults === 'army');
+  document.getElementById('branchImage');
+
+}
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -79,19 +90,24 @@ function handleChange(event) {
     let largestNumber = combatArmsCounter;
     if (largestNumber > aviationCounter){
       console.log('the job is combat arms');
+      localStorage.setItem('userOccupation', 'combatArms');
     }
     if (largestNumber < aviationCounter) {
       largestNumber = aviationCounter;
       console.log('the job is aviation');
+      localStorage.setItem('userOccupation', 'aviation');
     }
     if (largestNumber < medicalCounter) {
       largestNumber = medicalCounter;
       console.log('the job is a medic');
+      localStorage.setItem('userOccupation', 'medical');
     }
     if (largestNumber < specialForcesCounter) {
       largestNumber = specialForcesCounter;
       console.log('the job is SF');
+      localStorage.setItem('userOccupation', 'specialForces');
     }
+
   }
 }
 
