@@ -1,3 +1,4 @@
+
 "use strict";
 
 // global variables
@@ -174,3 +175,5 @@ function handleClick(event) {
 
 myContainer.addEventListener('click', handleClick);
 renderedPhotos();
+
+
