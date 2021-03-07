@@ -6,7 +6,7 @@
 }
 
 header {
-  background-color: darkgray;
+  background-color: #4E4B2C;
 }
 
 #logo {
@@ -15,6 +15,7 @@ header {
 
 a {
   font-size: 1.5em;
+  color: white;
 }
 
 ul {
@@ -37,6 +38,8 @@ li {
   text-align: center;
   margin-bottom: 15px;
   font-size: 1.25em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 ul li:first-child {
@@ -104,9 +107,9 @@ strong {
 
 footer div {
   height: 75px;
-  margin-top: 35px;
-  background-color: gray;
-  color: antiquewhite;
+  /* margin-top: 35px; */
+  Color: white;
+  background-color: #4E4B2C;
   text-align: center;
   padding-top: 15px;
   font-size: 2em;
