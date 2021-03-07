@@ -22,7 +22,7 @@ h2{
 .indexImg{
   display:inline-block;
 }
-
+/* 
 #imgOne{
   margin-left: 15%;
   margin-bottom: 25px;
@@ -38,6 +38,33 @@ h2{
 }
 
 #imgFour{
+
+  margin-left: 10%;
+} */
+
+#img-container{
+  width: 70vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 65px;
+}
+
+#btn{
+  display: flex;
+  justify-self: center;
+}
+
+#One{
+  display: flex;
+  justify-content: center;
+  gap: 65px;
+}
+
+#Two{
+  display: flex;
+  justify-content: center;
+  gap: 65px;
   margin-right: 15%;
 }
 
@@ -69,4 +96,5 @@ h2{
   justify-content: space-around;
   align-items: center;
   margin-top: 15px;
+
 }

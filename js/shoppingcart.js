@@ -107,7 +107,9 @@ function renderTableRow() {
 	tr.appendChild(tdImg);
 	
 	createTdOrTh(currentProduct.name, tr); // third td in a table row
+
 	createTdOrTh(`$ ${currentProduct.price}`, tr); // fourth td in a table row
+
 	
 	let tdQuantity = document.createElement('td'); // fifth td in a table row
 	let input = document.createElement('input');
@@ -117,7 +119,9 @@ function renderTableRow() {
 	tr.appendChild(tdQuantity);
 	
 	let total = parseInt(input.value) * currentProduct.price;
+
 	createTdOrTh(`$ ${total}`, tr); // sixth td in a table row
+
 
 	
 	tbody.appendChild(tr);
@@ -125,7 +129,9 @@ function renderTableRow() {
 	//-------------
 	function handleChange(e) {
 		let updatedTotal = e.target.value * currentProduct.price;
+
 		console.log(updatedTotal);
+
 		
 	}
 	input.addEventListener('change', handleChange);
@@ -155,7 +161,9 @@ function handleSelect(e) {
 // event handler for clicking the 'add to cart' button -> will render a table upon click
 function handleAdd(e) { // render a table upon clicking the "Add To Cart" button
 	document.getElementById('table').style.display = 'block';
+
 	document.getElementById('cart-total').style.display = 'block';
+
 	if (!document.querySelector('thead').children.length) { // only render table head when it is not exist
 		renderTableHead();
 	}
