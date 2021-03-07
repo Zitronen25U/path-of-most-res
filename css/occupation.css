@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 #branchImage{
   margin-top: 3%;
@@ -12,3 +13,12 @@
 #quiz{
   font-size: 1.5em;
 }
+=======
+input:last-child {
+  margin-left: 350px;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  background-color: red;
+  color: white;
+}
+>>>>>>> 1fc2ad26331028afd87333257afbcbc0c0166051
