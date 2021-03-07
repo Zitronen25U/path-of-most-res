@@ -10,6 +10,10 @@ let q4 = document.getElementById('question4');
 let myForm = document.getElementById('quiz');
 let currentQuestionIndex = 2;
 let totalRound = 5;
+let combatArmsCounter = 0;
+let aviationCounter = 0;
+let medicalCounter = 0;
+let specialForcesCounter = 0;
 
 // constructors
 function Question(question1, question2, question3, question4, question5) {
@@ -39,9 +43,36 @@ function handleSubmit(event){
   if (currentQuestionIndex <= totalRound) {
     renderQuestions(`question${currentQuestionIndex}`);
     currentQuestionIndex++;
+    event.target.reset();
   } else {
     myForm.removeEventListener('submit', handleSubmit);
   }
+}
+
+function handleChange(event) {
+  let value = event.target.value;
+  if (event.target.checked) {
+    if (value === 'combatArms') {
+      combatArmsCounter++;
+    } else if (value === 'aviation') {
+      aviationCounter++;
+    } else if (value === 'medical') {
+      medicalCounter++
+    } else if (value === 'specialForces') {
+      specialForcesCounter++;
+    }
+  } else {
+    if (value === 'combatArms') {
+      combatArmsCounter--;
+    } else if (value === 'aviation') {
+      aviationCounter--;
+    } else if (value === 'medical') {
+      medicalCounter--;
+    } else if (value === 'specialForces') {
+      specialForcesCounter--;
+    }
+  }
+  console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
 }
 
 function renderQuestions(question) {
@@ -55,3 +86,4 @@ renderQuestions('question1');
 
 // add event listener
 myForm.addEventListener('submit', handleSubmit);
+myForm.addEventListener('change', handleChange);
