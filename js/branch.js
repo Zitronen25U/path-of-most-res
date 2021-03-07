@@ -7,7 +7,15 @@ let q1 = document.getElementById('question1');
 let q2 = document.getElementById('question2');
 let q3 = document.getElementById('question3');
 let q4 = document.getElementById('question4');
-let myContainer = document.getElementById('quiz');
+let combatArmsCounter = 0;
+let aviationCounter = 0;
+let medicalCounter = 0;
+let specialForcesCounter = 0;
+
+
+let myForm = document.getElementById('quiz');
+let currentQuestionIndex = 2;
+let totalRound = 5;
 
 // constructors
 function Question(question1, question2, question3, question4, question5) {
@@ -29,21 +37,73 @@ let specialForcesQuestions = new Question('Do you consider yourself "elite"?', '
 
 // Renders
 
-function handleSubmit(event){
+function handleSubmit(event) {
   event.preventDefault();
-  let ans1 = event.onclick;
-  console.log(ans1);
-}
-
-function renderQuestions() {
-  for (let i = 0; i < allQuestions.length; i++) {
-    q1.textContent = allQuestions[0].question1;
-    q2.textContent = allQuestions[1].question1;
-    q3.textContent = allQuestions[2].question1;
-    q4.textContent = allQuestions[3].question1;
-    handleSubmit();
+  if (currentQuestionIndex <= totalRound) {
+    renderQuestions(`question${currentQuestionIndex}`);
+    currentQuestionIndex++;
+    event.target.reset();
+  } else {
+    myForm.removeEventListener('submit', handleSubmit);
   }
 }
 
-renderQuestions();
-myContainer.addEventListener('submit', handleSubmit);
+function handleChange(event) {
+  let value = event.target.value;
+  if (event.target.checked) {
+    if (value === 'combatArms') {
+      combatArmsCounter++;
+    } else if (value === 'aviation') {
+      aviationCounter++;
+    } else if (value === 'medical') {
+      medicalCounter++;
+    } else if (value === 'specialforces') {
+      specialForcesCounter++;
+    }
+  }
+  else {
+    if (value === 'combatArms') {
+      combatArmsCounter--;
+    } else if (value === 'aviation') {
+      aviationCounter--;
+    } else if (value === 'medical') {
+      medicalCounter--;
+    } else if (value === 'specialforces') {
+      specialForcesCounter--;
+    }
+  }
+  console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
+
+  if (currentQuestionIndex > 5) {
+
+    let largestNumber = combatArmsCounter;
+    if (largestNumber > aviationCounter){
+      console.log('the job is combat arms');
+    }
+    if (largestNumber < aviationCounter) {
+      largestNumber = aviationCounter;
+      console.log('the job is aviation');
+    }
+    if (largestNumber < medicalCounter) {
+      largestNumber = medicalCounter;
+      console.log('the job is a medic');
+    }
+    if (largestNumber < specialForcesCounter) {
+      largestNumber = specialForcesCounter;
+      console.log('the job is SF');
+    }
+  }
+}
+
+function renderQuestions(question) {
+  q1.textContent = allQuestions[0][question];
+  q2.textContent = allQuestions[1][question];
+  q3.textContent = allQuestions[2][question];
+  q4.textContent = allQuestions[3][question];
+}
+
+renderQuestions('question1');
+
+// add event listener
+myForm.addEventListener('submit', handleSubmit);
+myForm.addEventListener('change', handleChange);
