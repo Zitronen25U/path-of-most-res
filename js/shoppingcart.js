@@ -10,6 +10,7 @@ const usafProducts = [];
 const usmcProducts = [];
 const select = document.getElementById('gears');
 const addToCart = document.getElementById('add-product');
+const updateCart = document.getElementById('update-cart');
 
 // constructor functions
 function Product(name, price, description, branch) {
@@ -69,6 +70,66 @@ function renderProductSection(productsArr) {
 	currentProduct = productsArr[0];
 }
 
+// create appropriate tds for a table row in a table body and render it
+function createTdOrTh(textContent, parentEl) {
+	let td = document.createElement('td');
+	td.textContent = textContent;
+	parentEl.appendChild(td);
+}
+
+// create ths for a table row in a table head and render it
+function renderTableHead() {
+	const thead = document.querySelector('thead');
+	const tr = document.createElement('tr');
+	createTdOrTh('', tr);
+	createTdOrTh('', tr);
+	createTdOrTh('Product', tr);
+	createTdOrTh('Price', tr);
+	createTdOrTh('Quantity', tr);
+	createTdOrTh('Total', tr);
+	
+	thead.appendChild(tr);
+}
+
+function renderTableRow() {
+	const tbody = document.querySelector('tbody');
+	let tr = document.createElement('tr');
+	
+	createTdOrTh('X', tr); // first td in a table row
+	
+	let tdImg = document.createElement('td'); // second td in a table row
+	let img = document.createElement('img');
+	img.setAttribute('src', currentProduct.img);
+	img.setAttribute('alt', currentProduct.name);
+	img.setAttribute('width', 40);
+	img.setAttribute('height', 40);
+	tdImg.appendChild(img);
+	tr.appendChild(tdImg);
+	
+	createTdOrTh(currentProduct.name, tr); // third td in a table row
+	createTdOrTh(currentProduct.price, tr); // fourth td in a table row
+	
+	let tdQuantity = document.createElement('td'); // fifth td in a table row
+	let input = document.createElement('input');
+	input.setAttribute('type', 'number');
+	input.setAttribute('value', 1);
+	tdQuantity.appendChild(input);
+	tr.appendChild(tdQuantity);
+	
+	let total = parseInt(input.value) * currentProduct.price;
+	createTdOrTh(total, tr); // sixth td in a table row
+
+	
+	tbody.appendChild(tr);
+
+	//-------------
+	function handleChange(e) {
+		let updatedTotal = e.target.value * currentProduct.price;
+		
+	}
+	input.addEventListener('change', handleChange);
+}
+
 /*-------- functions and event handlers --------------------------------------------------------*/
 // event handler for choosing a product from the drop-down menu
 function handleSelect(e) {
@@ -90,9 +151,18 @@ function handleSelect(e) {
 	}
 }
 
-// event handler for clicking the 'add to cart' button
-function handleAdd(e) {
-	console.log(currentProduct);
+// event handler for clicking the 'add to cart' button -> will render a table upon click
+function handleAdd(e) { // render a table upon clicking the "Add To Cart" button
+	document.getElementById('table').style.display = 'block';
+	if (!document.querySelector('thead').children.length) { // only render table head when it is not exist
+		renderTableHead();
+	}
+	renderTableRow();
+}
+
+// handle to update the cart
+function handleUpdate(e) {
+	console.log(e.target);
 }
 
 /* -------------- Instantiate 24 products ---------------------------------------------------------*/
@@ -140,8 +210,7 @@ switch (branch) {
 		console.log('Should not be any errors.');
 }
 
-// render table for cart preview
-
 /*-------- Event Listener --------------------------------------------------------------------*/
 select.addEventListener('change', handleSelect);
 addToCart.addEventListener('click', handleAdd);
+updateCart.addEventListener('click', handleUpdate);

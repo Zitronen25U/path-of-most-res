@@ -14,12 +14,12 @@
 
 <body>
   <header>
-      <a href="index.html"><img id='logo' src="img/logo.jpg"></a>
+      <img id="logo" src="img/logo.jpg">
       <h1>The Path of Most Resistance</h1>
-      <a href="about-me.html">about us</a>
+      <a href="about-me.html">About the Developers</a>
+
   </header>
   <main>
-    <div id="bgimage" style="background-image: url('img/bgcamo.jpg');">
     <section id="branch">
       <!-- This section is for branch selection. -->
       <div>
@@ -42,33 +42,24 @@
       <!-- This section is for occupation selection. -->
       <h1>Your Branch of Service Should Be the "{branch}!"</h1>
 
-      <div id="branchchoice"><img src="https://via.placeholder.com/300"></div>
+      <div><img id='branchImage' src="https://via.placeholder.com/300"></div>
 
-      <div>
+      <div id='quizHolder'>
         <h1></h1>
-
         <form id = 'quiz'>
-          <fieldset class='checkbox-group required'>
-            <legend>Select as many answers as appropriate</legend>
-            <p>
-              <input type="checkbox" id="q1" name='q1'>
-              <label id = 'question1'></label><br>
-            </p>
-            <p>
-              <input type="checkbox" id="q2" name='q2'>
-              <label id = 'question2'></label><br>
-            </p>
-            <p>
-              <input type="checkbox" id="q3" name='q3'>
-              <label id = 'question3'></label><br>
-            </p>
-            <p>
-              <input type="checkbox" id = 'q4' name= 'q4'>
-              <label id = 'question4'></label><br>
-            </p>
-            <input type="submit" value="Submit">
-          </fieldset>
-          <!-- <input type="submit" value="Submit"> -->
+          <input type="checkbox" id="q1" name='q1' value="combatArms">
+          <label id='question1'></label><br></br>
+
+          <input type="checkbox" id="q2" name='q2' value="aviation">
+          <label id='question2'></label><br></br>
+
+          <input type="checkbox" id="q3" name='q3' value = "medical">
+          <label id='question3'></label><br></br>
+
+          <input type="checkbox" id='q4' name='q4' value="specialforces">
+          <label id='question4'></label><br></br>
+
+          <input type="submit" value="Submit">
         </form>
       </div>
     </section>
