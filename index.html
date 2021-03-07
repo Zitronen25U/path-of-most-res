@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title id="title">Path of Most Resistance</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/occupation.css">
+  <link rel="stylesheet" href="css/summary.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+      <img id="logo" src="img/logo.jpg">
+      <h1>The Path of Most Resistance</h1>
+
+      <a href="about-me.html">About the Developers</a>
+
+  </header>
+  <main>
+
+    <div id="bgimage" style="background-image: url('img/bgcamo.jpg');">
+    <section id="branch" title="mycontainer">
+
+      <!-- This section is for branch selection. -->
+      <div>
+        <h2>Choose Your Favorite of the Pictures Below</h2>
+      </div>
+      <div id="img-container">
+        <section id="One">
+          <img id="imgOne" src="">
+          <img id="imgTwo" src=""> 
+        </section>
+        <section id="Two">
+          <img id="imgThree" src="">
+          <img id="imgFour" src="">
+        </section>
+        <a href="#occupation" id="btn">Next Page</a>
+        </div>
+      </section>
+
+
+    <section id="occupation">
+      <!-- This section is for occupation selection. -->
+      <h1>Your Branch of Service Should Be the "{branch}!"</h1>
+
+      <div><img id='branchImage' src="https://via.placeholder.com/300"></div>
+
+      <div id='quizHolder'>
+        <h1></h1>
+
+        <form id = 'quiz'>
+          <input type="checkbox" id="q1" name='q1' value="combatArms">
+          <label id = 'question1'></label><br></br>
+
+          <input type="checkbox" id="q2" name='q2' value="aviation">
+          <label id = 'question2'></label><br></br>
+
+          <input type="checkbox" id="q3" name='q3' value="medical">
+          <label id = 'question3'></label><br></br>
+
+          <input type="checkbox" id = 'q4' name= 'q4' value="specialForces">
+          <label id = 'question4'></label><br></br>
+          
+          <input type="submit" value="Submit">
+
+        </form>
+      </div>
+    </section>
+
+    <section id="summary">
+        <h1>Your Occupation is "#"</h1>
+        <div class="branchpics">
+          <p id="occupationphotos"></p>
+          <ul id="workoutchart">
+            <li>Physical Training (PT) Standards</li><hr>
+          </ul>
+        </div>
+        <div>
+          <h2>Description:</h2>
+          <p id="occupationdescription"></p><hr>
+          <h2>Preparation:</h2>
+          <p id="preparationdescription">
+            <strong>Be Motivated!</strong>&nbsp&nbsp 
+            It is not my job to motivate you to serve your country. You have to be motivated and understand that your fitness level could be the difference between life and death for you, your partner, or a victim you are attempting to save.<br></br>
+            
+            <strong>Train for Upper Body Strength:</strong>&nbsp&nbsp 
+            Make sure you can do pushups, situps, and even pull-ups of some form as these exercises will help you climb fences or rope, jump walls, and handle an opponent if needed. Practice with weights, walls, ropes, and fences. Do not assume that you can accomplish these skills without practice.<br></br>
+
+            <strong>Eat Right for energy:</strong>&nbsp&nbsp 
+            Eating good carbohydrates and protein rich foods like fruits, veges, lean meats is the best tool for energy to exercise and prepare physically for training. Too many people rely on energy drinks which are really just caffeine and sugar to spike your central nervous system, not provide proper sustainable fuel for workouts."<br></br>
+          </p>
+          <div id="gearupbutton"> 
+            <a href='shopping-cart.html'><button>Click Here for Gear</button></a>
+          </div>
+
+        </div>
+      <!-- Above this line -->
+    </section>
+  </main>
+  <footer>
+    <div>The creators of this app are not responsible for your bad decisions in life</div>
+  </footer>
+  <script src="js/app.js"></script>
+  <script src="js/branch.js"></script>
+  <script src="js/occupation.js"></script>
+  <script src="js/summary.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</body>
+
+</html>

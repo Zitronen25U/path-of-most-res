@@ -1,0 +1,147 @@
+header {
+  background-color: darkgray;
+}
+
+#logo {
+  border-radius: 35px;
+}
+
+body {
+  background-color: azure;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 960px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bolder;
+  text-align: center;
+  margin: 20px 0;
+  padding: 5px;
+}
+
+section#products {
+  margin: auto;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 3px solid bisque;
+  width: 650px;
+}
+
+div#details {
+  margin-left: 20px;
+  padding: 10px;
+  width: 320px;
+}
+
+div#details > h2 {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+div#product {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+div#product > select {
+  width: 180px;
+  padding: 3px;
+}
+
+#gears {
+  font-size: 12px;
+}
+
+div#product > div {
+  padding: 6px;
+}
+
+#details > p {
+  margin-top: 10px;
+  height: 100px;
+  overflow: scroll;
+  line-height: 130%;
+  font-size: 14px;
+}
+
+#add-product {
+  margin-top: 15px;
+  background-color: gray;
+  padding: 10px;
+  width: max-content;
+  border-radius: 5px;
+}
+
+section#table {
+  margin: auto;
+  display: none;
+  width: max-content;
+}
+
+table {
+  border: 3px solid bisque;
+  margin-top: 30px;
+  width: 800px;
+  background-color: chocolate;
+  margin: auto;
+}
+
+th {
+  border: 3px solid black;
+  padding: 5px;
+}
+
+td {
+  margin: auto;
+  border: 3px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+div#update-cart {
+  float: right;
+  margin-top: 10px;
+  background-color: gray;
+  padding: 10px;
+  width: max-content;
+  border-radius: 5px;
+
+}
+
+#cart-total {
+  /* clear: right; */
+  display: none;
+  width: max-content;
+  background-color: orange;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#cart-total h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#total {
+  border: 3px solid black;
+}
+
+#checkout {
+  margin: auto;
+  margin-top: 15px;
+  background-color: black;
+  color: antiquewhite;
+  padding: 10px;
+  border-radius: 5px;
+  width: max-content;
+
+}
