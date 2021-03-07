@@ -1,42 +1,109 @@
 'use strict';
 
-// var ctx = document.getElementById('myChart');
+// global variables
 
-// var ctx = document.getElementById('myChart');
+let allQuestions = [];
+let q1 = document.getElementById('question1');
+let q2 = document.getElementById('question2');
+let q3 = document.getElementById('question3');
+let q4 = document.getElementById('question4');
+let combatArmsCounter = 0;
+let aviationCounter = 0;
+let medicalCounter = 0;
+let specialForcesCounter = 0;
 
-// var myChart = new Chart(ctx, {
-//   type: 'bar',
-//   data: {
-//     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//     datasets: [{
-//       label: '# of Votes',
-//       data: [12, 19, 3, 5, 2, 3],
-//       backgroundColor: [
-//         'rgba(255, 99, 132, 0.2)',
-//         'rgba(54, 162, 235, 0.2)',
-//         'rgba(255, 206, 86, 0.2)',
-//         'rgba(75, 192, 192, 0.2)',
-//         'rgba(153, 102, 255, 0.2)',
-//         'rgba(255, 159, 64, 0.2)'
-//       ],
-//       borderColor: [
-//         'rgba(255, 99, 132, 1)',
-//         'rgba(54, 162, 235, 1)',
-//         'rgba(255, 206, 86, 1)',
-//         'rgba(75, 192, 192, 1)',
-//         'rgba(153, 102, 255, 1)',
-//         'rgba(255, 159, 64, 1)'
-//       ],
-//       borderWidth: 1
-//     }]
-//   },
-//   options: {
-//     scales: {
-//       yAxes: [{
-//         ticks: {
-//           beginAtZero: true
-//         }
-//       }]
-//     }
-//   }
-// });
+
+let myForm = document.getElementById('quiz');
+let currentQuestionIndex = 2;
+let totalRound = 5;
+
+// constructors
+function Question(question1, question2, question3, question4, question5) {
+  this.question1 = question1;
+  this.question2 = question2;
+  this.question3 = question3;
+  this.question4 = question4;
+  this.question5 = question5;
+  allQuestions.push(this);
+}
+
+let combatArmsQuestions = new Question('Do you enjoy action?', 'Do you like to work with different weapon systems?', 'Do you like physical fitness?', 'Do you like to be a leader?', 'Do you like the idea of doing different types of activities such as jumping out of planes, backpacking, or other strenuous activities?');
+
+let aviationQuestions = new Question('Do you like the idea of flying in planes or helicopters?', 'Do you like the idea of working on airplanes or helicopters?', 'Do you like the idea of working the operating the weapon systems of a helicopter or airplane?', 'Do you like the idea of being an air traffic controller?', 'Do you like the idea of flying cargo?');
+
+let medicalQuestions = new Question('Do you like the idea of saving lives?', 'Do you like the idea of working in a hospital?', 'Do you like the idea of working with a dentist?', 'Do you like the idea of working as a pharmacist?', 'Do you like the idea of working as a physical therapist?');
+
+let specialForcesQuestions = new Question('Do you consider yourself "elite"?', 'Do you enjoy pushing yourself to your limits?', 'Do you like the idea of working with specialized teams to accomplish tasks that no one else can?', 'Do you like the idea of training foreign entities to defend themselves against the evils of the world?', 'Do you like the idea of testing the newest tactics, technologies, or equipment?');
+
+// Renders
+
+function handleSubmit(event) {
+  event.preventDefault();
+  if (currentQuestionIndex <= totalRound) {
+    renderQuestions(`question${currentQuestionIndex}`);
+    currentQuestionIndex++;
+    event.target.reset();
+  } else {
+    myForm.removeEventListener('submit', handleSubmit);
+  }
+}
+
+function handleChange(event) {
+  let value = event.target.value;
+  if (event.target.checked) {
+    if (value === 'combatArms') {
+      combatArmsCounter++;
+    } else if (value === 'aviation') {
+      aviationCounter++;
+    } else if (value === 'medical') {
+      medicalCounter++;
+    } else if (value === 'specialforces') {
+      specialForcesCounter++;
+    }
+  }
+  else {
+    if (value === 'combatArms') {
+      combatArmsCounter--;
+    } else if (value === 'aviation') {
+      aviationCounter--;
+    } else if (value === 'medical') {
+      medicalCounter--;
+    } else if (value === 'specialforces') {
+      specialForcesCounter--;
+    }
+  }
+  console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
+
+  if (currentQuestionIndex > 5) {
+
+    let largestNumber = combatArmsCounter;
+    if (largestNumber > aviationCounter){
+      console.log('the job is combat arms');
+    }
+    if (largestNumber < aviationCounter) {
+      largestNumber = aviationCounter;
+      console.log('the job is aviation');
+    }
+    if (largestNumber < medicalCounter) {
+      largestNumber = medicalCounter;
+      console.log('the job is a medic');
+    }
+    if (largestNumber < specialForcesCounter) {
+      largestNumber = specialForcesCounter;
+      console.log('the job is SF');
+    }
+  }
+}
+
+function renderQuestions(question) {
+  q1.textContent = allQuestions[0][question];
+  q2.textContent = allQuestions[1][question];
+  q3.textContent = allQuestions[2][question];
+  q4.textContent = allQuestions[3][question];
+}
+
+renderQuestions('question1');
+
+// add event listener
+myForm.addEventListener('submit', handleSubmit);
+myForm.addEventListener('change', handleChange);
