@@ -97,14 +97,39 @@ function handleClick(event) {
     localStorage.setItem('marines', marineClick);
     localStorage.setItem('navy', navyClick);
     localStorage.setItem('airforce', airforceClick);
-    localStorage.setItem('clickTotal', totalClicks);
   }
   if (event.target.title === myContainer) {
     alert('Click on the best image');
   }
   renderedPhotos();
-}
 
+  let finalClickCount = armyClick;
+
+  if (clicksAllowed >= 5) {
+    if (armyClick >= marineClick || armyClick >= airforceClick || armyClick >= navyClick) {
+      localStorage.setItem('clickTotal', 'isArmy');
+    }
+    if (marineClick > finalClickCount) {
+      localStorage.setItem('clickTotal', 'isMarines');
+    }
+    if (navyClick > finalClickCount) {
+      localStorage.setItem('clickTotal', 'isNavy');
+    }
+    if (airforceClick > finalClickCount) {
+      localStorage.setItem('clickTotal', 'isAirforce');
+    }
+  }
+
+}
 
 myContainer.addEventListener('click', handleClick);
 renderedPhotos();
+
+let nextPage = document.getElementById('btn');
+nextPage.addEventListener('click', handleNextClick);
+
+function handleNextClick(event){
+  occupation();
+  document.getElementById('occupation').style.display= 'block';
+  document.getElementById('branch').style.display= 'none';
+}
