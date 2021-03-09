@@ -94,17 +94,6 @@ function handleClick(event) {
     localStorage.setItem('airforce', airforceClick);
   }
   renderedPhotos();
-
-
-// excutable code
-renderedPhotos();
-
-// event listener
-imageOne.addEventListener('click', handleClick);
-imageTwo.addEventListener('click', handleClick);
-imageThree.addEventListener('click', handleClick);
-imageFour.addEventListener('click', handleClick);
-
   let finalClickCount = armyClick;
 
   if (totalClicks >= 4) {
@@ -127,8 +116,14 @@ imageFour.addEventListener('click', handleClick);
 
 }
 
-myContainer.addEventListener('click', handleClick);
+// excutable code
 renderedPhotos();
+
+// event listener
+imageOne.addEventListener('click', handleClick);
+imageTwo.addEventListener('click', handleClick);
+imageThree.addEventListener('click', handleClick);
+imageFour.addEventListener('click', handleClick);
 
 let nextPage = document.getElementById('btn');
 nextPage.addEventListener('click', handleNextClick);
@@ -138,4 +133,3 @@ function handleNextClick(event){
   document.getElementById('occupation').style.display= 'block';
   document.getElementById('branch').style.display= 'none';
 }
-
