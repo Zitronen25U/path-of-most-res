@@ -15,7 +15,7 @@ const updateCart = document.getElementById('update-cart');
 // constructor functions
 function Product(name, price, description, branch) {
 	this.name = name;
-	this.img = `../img/shoppingcart/${name}.jpg`;
+	this.img = `img/shoppingcart/${name}.jpg`;
 	this.price = price;
 	this.description = description;
 	this.branch = branch;
@@ -224,3 +224,18 @@ switch (branch) {
 select.addEventListener('change', handleSelect);
 addToCart.addEventListener('click', handleAdd);
 updateCart.addEventListener('click', handleUpdate);
+
+// Temp code holding place for cart
+function Cart(items) {
+	this.items = items;
+}
+
+let cart = new Cart([]);
+
+Cart.prototype.addItem = function(currentProduct) {
+	for(let item of this.items) {
+		if (item.name === currentProduct.name) {
+			
+		}
+	}
+}
