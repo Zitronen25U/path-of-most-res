@@ -61,34 +61,32 @@ function addPFTStandards() {
   }
 }
 
-function addOccupationPicture() {
-  let p = document.getElementById('occupationphotos')
-  //NEED VARIABLE SET TO userOccupation!
-  // let img = `<img src="img/occupation/${userOccupation}.jpg">`
-  let img = `<img src="img/occupation/logistics.jpg">`
-  p.innerHTML = img;
+//Retrieving parsed User Occupation Data in Local Storage
+let userOccupation = window.localStorage.getItem('userOccupation');
+let parsedItem = JSON.parse(userOccupation);
+
+// Add User Occupation Title to the top of the Screen
+function addOccupationTitle() {
+  let h1 = document.querySelector('#summary h1');
+  h1.innerHTML = `Your Occupation is: ${parsedItem[0].occupation}`
 }
 
-let aviationDescription = `Military aviation comprises military aircraft and other flying machines for the purposes of conducting or enabling aerial warfare, including national airlift (air cargo) capacity to provide logistical supply to forces stationed in a war theater or along a front. Airpower includes the national means of conducting such warfare, including the intersection of transport and warcraft. Military aircraft include bombers, fighters, transports, trainer aircraft, and reconnaissance aircraft.`
-
-let combatArmsDescription = "Combat arms (or fighting arms in non-American parlance) is a collective name for troops within national armed forces which participate in direct tactical ground combat. In general they include units that carry or employ a weapon system, such as infantry, cavalry, and artillery units. The use of multiple combat arms in mutually supporting ways is known as combined arms."
-
-let logisticsDescription = "Military logistics is the discipline of planning and carrying out the movement, supply, and maintenance of military forces. In its most comprehensive sense, it is those aspects or military operations that deal with Design, development, acquisition, storage, distribution, maintenance, evacuation, and disposition of material, Transport of personnel, Acquisition or construction, maintenance, operation, and disposition of facilities, Acquisition or furnishing of services, Medical and health service support."
-
-let medicalDescription = "A medical specialty, specifically a branch of occupational medicine attending to the medical risks and needs (both preventive and interventional) of soldiers, sailors and other service members. This disparate arena has historically involved the prevention and treatment of infectious diseases (especially tropical diseases), and, in the 20th Century, the ergonomics and health effects of operating military-specific machines and equipment such as submarines, tanks, helicopters and airplanes."
-
-let specialForcesDescription = "Military activities conducted by specially designated, organized, trained, and equipped forces, manned with selected personnel, using unconventional tactics, techniques, and modes of employment"
+function addOccupationPicture() {
+  let p = document.getElementById('occupationphotos')
+  let img = `<img src="img/occupation/${parsedItem[0].branch}.jpg">`
+  p.innerHTML = img;
+}
 
 // Add Description of the Occupation to the DOM
 function addOccupationDescription() {
   let h2 = document.getElementById('occupationdescription');
   let p = document.createElement('p');
-  // p.textContent = `${userOccupation}Description`
-  p.innerHTML = aviationDescription
+  p.textContent = parsedItem[0].description;
   h2.appendChild(p);
 }
 
 function renderAll() {
+  addOccupationTitle();
   addOccupationDescription();
   addOccupationPicture();
   addPFTStandards();
