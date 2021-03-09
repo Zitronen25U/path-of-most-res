@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 #branchImage{
   margin-top: 3%;
@@ -13,7 +12,7 @@
 #quiz{
   font-size: 1.5em;
 }
-=======
+
 input:last-child {
   margin-left: 350px;
   margin-top: 35px;
@@ -21,4 +20,23 @@ input:last-child {
   background-color: red;
   color: white;
 }
->>>>>>> 1fc2ad26331028afd87333257afbcbc0c0166051
+
+#occupation{
+  display: none;
+}
+
+#branchDisplay{
+  font-size: 2em;
+  font-style: italic;
+  text-align: center;
+}
+
+#btn{
+  text-align: center;
+  font-size: 2em;
+  font-style: italic;
+}
+
+#btn:hover{
+  text-decoration: wavy;
+}

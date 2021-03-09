@@ -12,71 +12,46 @@ h1{
   float: left;
 }
 /* MAIN */
-
-h2{
+#branch h2{
+  margin-top: 0px;
   text-align: center;
-  font-size: 2em;
-  margin-top: 3%;
+  font-size: 30px;
+  padding: 30px;
 }
 
-.indexImg{
-  display:inline-block;
+section#branch {
+  text-align: center;
 }
-/* 
-#imgOne{
-  margin-left: 15%;
-  margin-bottom: 25px;
-}
-
-#imgTwo{
-  margin-right: 15%;
-  margin-bottom: 25px;
-}
-
-#imgThree{
-  margin-left: 15%;
-}
-
-#imgFour{
-
-  margin-left: 10%;
-} */
 
 #img-container{
-  width: 70vw;
   margin: auto;
-  display: grid;
-  grid-template-columns: 100%;
-  gap: 65px;
+  display: inline-block;
+  text-align: center;
+  width: 1000px;
 }
 
 #btn{
-  display: flex;
-  justify-self: center;
+  background-color: rgb(28, 160, 236);
+  width: max-content;
+  padding: 10px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+#btn:hover {
+  background-color:crimson;
+  cursor: pointer;
 }
 
 #One{
   display: flex;
-  justify-content: center;
-  gap: 65px;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 35px;
 }
 
 #Two{
-  display: flex;
-  justify-content: center;
-  gap: 65px;
-  margin-right: 15%;
-}
-
-#rowOne {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 35px;
-  }
-
-#rowTwo {
   display: flex;
   justify-content: space-around;
   align-items: center;

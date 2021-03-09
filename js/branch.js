@@ -9,7 +9,7 @@ let imageOne = document.getElementById('imgOne');
 let imageTwo = document.getElementById('imgTwo');
 let imageThree = document.getElementById('imgThree');
 let imageFour = document.getElementById('imgFour');
-let myContainer = document.getElementById('branch');
+let myContainer = document.getElementById('img-container');
 
 function Photos(name, branch, fileExtensions = 'jpg') {
   this.name = name;
@@ -19,16 +19,11 @@ function Photos(name, branch, fileExtensions = 'jpg') {
   allPhotos.push(this);
 }
 
-
 let army = localStorage.getItem('army');
 let marines = localStorage.getItem('marines');
 let navy = localStorage.getItem('navy');
 let airforce = localStorage.getItem('airforce');
 
-// if (retrievedPhotos) {
-//   let parsedProducts = JSON.parse(retrievedPhotos);
-//   allPhotos = parsedProducts;
-// } else {
 new Photos('moppingarmy', 'army');
 new Photos('crayolapopsiclesmarinecorps', 'marine corps');
 new Photos('chairairforce', 'airforce');
@@ -49,7 +44,6 @@ new Photos('mechanicmarinecorps', 'marine corps');
 new Photos('refuelingairplaneairforce', 'airforce');
 new Photos('scubadivernavy', 'navy');
 new Photos('truckdriverArmy', 'army');
-// }
 
 function renderedPhotos() {
   let firstProIndex = allPhotos.pop();
@@ -74,7 +68,6 @@ function renderedPhotos() {
   imageFour.branch = fourProIndex.branch;
 }
 
-
 function handleClick(event) {
   console.log(totalClicks, clicksAllowed);
   totalClicks++;
@@ -91,20 +84,58 @@ function handleClick(event) {
     airforceClick++;
   }
   if (totalClicks === clicksAllowed) {
-    console.log('click no more');
-    myContainer.removeEventListener('click', handleClick);
+    imageOne.removeEventListener('click', handleClick);
+    imageTwo.removeEventListener('click', handleClick);
+    imageThree.removeEventListener('click', handleClick);
+    imageFour.removeEventListener('click', handleClick);
     localStorage.setItem('army', armyClick);
     localStorage.setItem('marines', marineClick);
     localStorage.setItem('navy', navyClick);
     localStorage.setItem('airforce', airforceClick);
-    localStorage.setItem('clickTotal', totalClicks);
-  }
-  if (event.target.title === myContainer) {
-    alert('Click on the best image');
   }
   renderedPhotos();
-}
 
+
+// excutable code
+renderedPhotos();
+
+// event listener
+imageOne.addEventListener('click', handleClick);
+imageTwo.addEventListener('click', handleClick);
+imageThree.addEventListener('click', handleClick);
+imageFour.addEventListener('click', handleClick);
+
+  let finalClickCount = armyClick;
+
+  if (totalClicks >= 4) {
+    if (armyClick >= marineClick || armyClick >= airforceClick || armyClick >= navyClick) {
+      localStorage.setItem('clickTotal', 'isArmy');
+    }
+    if (marineClick > finalClickCount) {
+      finalClickCount = marineClick;
+      localStorage.setItem('clickTotal', 'isMarines');
+    }
+    if (navyClick > finalClickCount) {
+      finalClickCount = navyClick;
+      localStorage.setItem('clickTotal', 'isNavy');
+    }
+    if (airforceClick > finalClickCount) {
+      finalClickCount = airforceClick;
+      localStorage.setItem('clickTotal', 'isAirforce');
+    }
+  }
+
+}
 
 myContainer.addEventListener('click', handleClick);
 renderedPhotos();
+
+let nextPage = document.getElementById('btn');
+nextPage.addEventListener('click', handleNextClick);
+
+function handleNextClick(event){
+  occupation();
+  document.getElementById('occupation').style.display= 'block';
+  document.getElementById('branch').style.display= 'none';
+}
+
