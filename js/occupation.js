@@ -12,9 +12,6 @@ function occupation() {
   let aviationCounter = 0;
   let medicalCounter = 0;
   let specialForcesCounter = 0;
-
-
-
   let myForm = document.getElementById('quiz');
   let currentQuestionIndex = 2;
   let totalRound = 5;
@@ -39,9 +36,24 @@ function occupation() {
 
   // Renders
 
-  let branchStringPicture = localStorage.getItem('clickTotal');
-  console.log(branchStringPicture);
+  let branchLocalStorage = localStorage.getItem('clickTotal');
+  if(branchLocalStorage === 'isArmy'){
+    document.getElementById('branchDisplay').textContent= 'Your Branch Should be the Army!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/Army.jpg');
+  }
+  if(branchLocalStorage === 'isMarines'){
+    document.getElementById('branchDisplay').textContent= 'Your Branch Should be the Marines!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/marine.jpg');
+  }
+  if(branchLocalStorage === 'isNavy'){
+    document.getElementById('branchDisplay').textContent= 'Your Branch Should be the Navy!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/navy.png');
+  }
 
+  if(branchLocalStorage === 'isAirforce'){
+    document.getElementById('branchDisplay').textContent= 'Your Branch Should be the Airforce!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
+  }
 
   function handleSubmit(event) {
     event.preventDefault();

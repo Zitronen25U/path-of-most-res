@@ -24,3 +24,19 @@ input:last-child {
 #occupation{
   display: none;
 }
+
+#branchDisplay{
+  font-size: 2em;
+  font-style: italic;
+  text-align: center;
+}
+
+#btn{
+  text-align: center;
+  font-size: 2em;
+  font-style: italic;
+}
+
+#btn:hover{
+  text-decoration: wavy;
+}

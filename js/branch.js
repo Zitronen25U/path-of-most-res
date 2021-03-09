@@ -105,17 +105,20 @@ function handleClick(event) {
 
   let finalClickCount = armyClick;
 
-  if (clicksAllowed >= 5) {
+  if (totalClicks >= 4) {
     if (armyClick >= marineClick || armyClick >= airforceClick || armyClick >= navyClick) {
       localStorage.setItem('clickTotal', 'isArmy');
     }
     if (marineClick > finalClickCount) {
+      finalClickCount = marineClick;
       localStorage.setItem('clickTotal', 'isMarines');
     }
     if (navyClick > finalClickCount) {
+      finalClickCount = navyClick;
       localStorage.setItem('clickTotal', 'isNavy');
     }
     if (airforceClick > finalClickCount) {
+      finalClickCount = airforceClick;
       localStorage.setItem('clickTotal', 'isAirforce');
     }
   }
