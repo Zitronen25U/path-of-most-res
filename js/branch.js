@@ -92,10 +92,9 @@ function handleClick(event) {
     localStorage.setItem('marines', marineClick);
     localStorage.setItem('navy', navyClick);
     localStorage.setItem('airforce', airforceClick);
-    localStorage.setItem('clickTotal', totalClicks);
   }
   renderedPhotos();
-}
+
 
 // excutable code
 renderedPhotos();
@@ -105,3 +104,38 @@ imageOne.addEventListener('click', handleClick);
 imageTwo.addEventListener('click', handleClick);
 imageThree.addEventListener('click', handleClick);
 imageFour.addEventListener('click', handleClick);
+
+  let finalClickCount = armyClick;
+
+  if (totalClicks >= 4) {
+    if (armyClick >= marineClick || armyClick >= airforceClick || armyClick >= navyClick) {
+      localStorage.setItem('clickTotal', 'isArmy');
+    }
+    if (marineClick > finalClickCount) {
+      finalClickCount = marineClick;
+      localStorage.setItem('clickTotal', 'isMarines');
+    }
+    if (navyClick > finalClickCount) {
+      finalClickCount = navyClick;
+      localStorage.setItem('clickTotal', 'isNavy');
+    }
+    if (airforceClick > finalClickCount) {
+      finalClickCount = airforceClick;
+      localStorage.setItem('clickTotal', 'isAirforce');
+    }
+  }
+
+}
+
+myContainer.addEventListener('click', handleClick);
+renderedPhotos();
+
+let nextPage = document.getElementById('btn');
+nextPage.addEventListener('click', handleNextClick);
+
+function handleNextClick(event){
+  occupation();
+  document.getElementById('occupation').style.display= 'block';
+  document.getElementById('branch').style.display= 'none';
+}
+
