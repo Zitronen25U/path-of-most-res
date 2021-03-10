@@ -5,15 +5,6 @@
   margin-bottom: 35px;
 }
 
-#logo {
-  border-radius: 35px;
-}
-
-a {
-  font-size: 1.5em;
-  color: white;
-}
-
 ul {
   width: 550px;
   height: 255px;
@@ -45,6 +36,8 @@ ul li:first-child {
 }
 
 #summary h1 {
+  margin-top: 0px;
+  padding-top: 20px;
   text-align: center;
   margin-bottom: 45px;
   font-size: 2em;
@@ -99,13 +92,4 @@ button:hover {
 
 strong {
   font-weight: bold;
-}
-
-footer div {
-  height: 75px;
-  Color: white;
-  background-color: #4E4B2C;
-  text-align: center;
-  padding-top: 15px;
-  font-size: 2em;
 }
