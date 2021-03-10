@@ -42,13 +42,13 @@ section#branch {
 #countdown{
   position: absolute;
   left: 2%;
-  top: 40%;
+  top: 50%;
   background-color: rgb(28, 160, 236);
   width: max-content;
-  padding: 10px;
+  padding: 18px;
   margin: auto;
   border-radius: 10px;
-  font-size: 18pt;
+  font-size: 30pt;
 }
 
 #btn:hover {

@@ -75,7 +75,7 @@ let downloadTimer = setInterval(function(){
     clearInterval(downloadTimer);
     document.getElementById('countdown').innerHTML = 'HURRY UP!';
   } else {
-    document.getElementById('countdown').innerHTML = timeleft + 'seconds remaining';
+    document.getElementById('countdown').innerHTML = timeleft;
   }
   timeleft -= 1;
 }, 1000);
