@@ -1,4 +1,3 @@
-
 #branchImage{
   margin-top: 3%;
   margin-left: 20%;
@@ -26,6 +25,8 @@ input:last-child {
 }
 
 #branchDisplay{
+  margin-top: 0px;
+  padding-top: 20px;
   font-size: 2em;
   font-style: italic;
   text-align: center;

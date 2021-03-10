@@ -6,11 +6,11 @@ header {
   background-color: #4E4B2C;
 }
 
-header a {
+/* header a {
   margin-right: 15px;
   margin-left: 15px;
   float: right;
-}
+} */
 
 header h1 {
   font-size: 2.5em;
@@ -20,4 +20,22 @@ header h1 {
 
 #bgimage {
   background-size: 100% 100%;
+}
+
+#logo {
+  border-radius: 35px;
+}
+
+a {
+  font-size: 1.5em;
+  color: white;
+}
+
+footer div {
+  height: 75px;
+  Color: white;
+  background-color: #4E4B2C;
+  text-align: center;
+  padding-top: 35px;
+  font-size: 2em;
 }

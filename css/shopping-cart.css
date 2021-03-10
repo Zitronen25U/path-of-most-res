@@ -1,24 +1,18 @@
-header {
-  background-color: darkgray;
-}
-
-#logo {
-  border-radius: 35px;
-}
-
 body {
-  background-color: azure;
   font-family: Arial, Helvetica, sans-serif;
-  width: 960px;
   margin: auto;
 }
 
-h1 {
+main {
+  background-image: url('../img/bgcamo.jpg');
+}
+
+main h1 {
+  margin-top: 0px;
+  padding-top: 30px;
   font-size: 2em;
   font-weight: bolder;
   text-align: center;
-  margin: 20px 0;
-  padding: 5px;
 }
 
 section#products {
