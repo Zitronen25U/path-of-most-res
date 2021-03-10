@@ -17,7 +17,7 @@ function occupation() {
     [{
       branch: 'combatarms',
       description: "Combat arms (or fighting arms in non-American parlance) is a collective name for troops within national armed forces which participate in direct tactical ground combat. In general they include units that carry or employ a weapon system, such as infantry, cavalry, and artillery units. The use of multiple combat arms in mutually supporting ways is known as combined arms.",
-      occupation: "Combat Arms"
+      occupation: "Combat Arms",
     }];
 
   let aviationDescription =
