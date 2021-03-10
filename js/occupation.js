@@ -2,7 +2,6 @@
 
 // global variables
 let allQuestions = [];
-let branchImages = [];
 let q1 = document.getElementById('question1');
 let q2 = document.getElementById('question2');
 let q3 = document.getElementById('question3');
@@ -13,11 +12,37 @@ let medicalCounter = 0;
 let specialForcesCounter = 0;
 
 function occupation() {
+
+  let totalArmyClick = +localStorage.getItem('army');
+  let totalMarineClick = +localStorage.getItem('marines');
+  let totalNavyClick = +localStorage.getItem('navy');
+  let totalAFClick = +localStorage.getItem('airforce');
+  var ctx = document.getElementById('myPieChart').getContext('2d');
+
+  let data = {
+    datasets: [{
+      data: [totalArmyClick, totalMarineClick, totalNavyClick, totalAFClick],
+      backgroundColor: ["#2ECC40", "#FF4136" ,"#0074D9", "#7FDBFF"],
+    }],
+    labels: [
+      'Total Army Clicks',
+      'Total Marine Clicks',
+      'Total Navy Clicks',
+      'Total Air Force Clicks'
+    ],
+  };
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: data,
+  });
+
+
   let combatArmsDescription =
     [{
       branch: 'combatarms',
       description: "Combat arms (or fighting arms in non-American parlance) is a collective name for troops within national armed forces which participate in direct tactical ground combat. In general they include units that carry or employ a weapon system, such as infantry, cavalry, and artillery units. The use of multiple combat arms in mutually supporting ways is known as combined arms.",
-      occupation: "Combat Arms"
+      occupation: "Combat Arms",
     }];
 
   let aviationDescription =
@@ -74,14 +99,23 @@ function occupation() {
 
   // Renders
 
+  let branchLocalStorage = localStorage.getItem('clickTotal');
+  if (branchLocalStorage === 'isArmy') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Army!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/Army.jpg');
+  }
+  if (branchLocalStorage === 'isMarines') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Marines!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/marine.jpg');
+  }
+  if (branchLocalStorage === 'isNavy') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Navy!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/navy.png');
+  }
 
-  var retrieveResults = localStorage.getItem('branch');
-  let parsedResults = JSON.parse(retrieveResults);
-
-  function branchPicture() {
-    if (parsedResults === 'army');
-    document.getElementById('branchImage');
-
+  if (branchLocalStorage === 'isAirforce') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Airforce!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
   }
 
   function handleSubmit(event) {
@@ -91,31 +125,29 @@ function occupation() {
       currentQuestionIndex++;
       event.target.reset();
     } else {
-      myForm.removeEventListener('submit', handleSubmit);
-      document.getElementById('occupation').style.display = 'none';
-      document.getElementById('summary').style.display = 'block';
+// <<<<<<< bml-pie-chart----if something breaks, undo me!
+// =======
+//       let branchLocalStorage = localStorage.getItem('clickTotal');
+//       if (branchLocalStorage === 'isArmy') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Army!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/Army.jpg');
 
-      let branchLocalStorage = localStorage.getItem('clickTotal');
-      if (branchLocalStorage === 'isArmy') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Army!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/Army.jpg');
+//       }
+//       if (branchLocalStorage === 'isMarines') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Marines!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/marine.jpg');
+//       }
+//       if (branchLocalStorage === 'isNavy') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Navy!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/navy.png');
+//       }
 
-      }
-      if (branchLocalStorage === 'isMarines') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Marines!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/marine.jpg');
-      }
-      if (branchLocalStorage === 'isNavy') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Navy!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/navy.png');
-      }
+//       if (branchLocalStorage === 'isAirforce') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Airforce!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
+//       }
 
-      if (branchLocalStorage === 'isAirforce') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Airforce!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
-      }
-
-
+// >>>>>>> dev
       let largestNumber = combatArmsCounter;
       if (largestNumber > aviationCounter) {
         // console.log('the job is combat arms');
@@ -140,18 +172,13 @@ function occupation() {
         let JsonString = JSON.stringify(specialForcesDescription);
         localStorage.setItem('userOccupation', JsonString);
       }
+
+      document.getElementById('occupation').style.display = 'none';
+      document.getElementById('summary').style.display = 'block';
+      renderAll();
+      myForm.removeEventListener('submit', handleSubmit);
     }
   }
-        // function handleSubmit(event) {
-        //   event.preventDefault();
-        //   if (currentQuestionIndex <= totalRound) {
-        //     renderQuestions(`question${currentQuestionIndex}`);
-        //     currentQuestionIndex++;
-        //     event.target.reset();
-        //   } else {
-        //     myForm.removeEventListener('submit', handleSubmit);
-        //   }
-        // }
 
   function handleChange(event) {
     let value = event.target.value;
@@ -178,30 +205,6 @@ function occupation() {
     }
     console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
 
-    if (currentQuestionIndex > 5) {
-
-      let largestNumber = combatArmsCounter;
-      if (largestNumber > aviationCounter) {
-        console.log('the job is combat arms');
-        localStorage.setItem('userOccupation', 'combatArms');
-      }
-      if (largestNumber < aviationCounter) {
-        largestNumber = aviationCounter;
-        console.log('the job is aviation');
-        localStorage.setItem('userOccupation', 'aviation');
-      }
-      if (largestNumber < medicalCounter) {
-        largestNumber = medicalCounter;
-        console.log('the job is a medic');
-        localStorage.setItem('userOccupation', 'medical');
-      }
-      if (largestNumber < specialForcesCounter) {
-        largestNumber = specialForcesCounter;
-        console.log('the job is SF');
-        localStorage.setItem('userOccupation', 'specialForces');
-      }
-
-    }
   }
 
   function renderQuestions(question) {
@@ -215,6 +218,5 @@ function occupation() {
 
   // add event listener
   myForm.addEventListener('submit', handleSubmit);
-  myForm.addEventListener('change', handleChange);
-      
+  myForm.addEventListener('change', handleChange); 
 }

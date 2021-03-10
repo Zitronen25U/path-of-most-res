@@ -19,4 +19,9 @@ Path of Most Resistance is an app designed to give students or professionals a l
 
 ## Sources:
 
-Google Fonts: [Vernon Adams](https://fonts.google.com/specimen/Anton?preview.text_type=custom#license)
+Google Fonts:
+  [Vernon Adams](https://fonts.google.com/specimen/Anton?preview.text_type=custom#license)
+
+Pie Chart Help:
+  [Stack OverFlow](https://stackoverflow.com/questions/28828915/how-set-color-family-to-pie-chart-in-chart-js)
+  [GitHub](https://github.com/chartjs/Chart.js/issues/3378)
