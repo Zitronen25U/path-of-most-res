@@ -42,7 +42,7 @@ function occupation() {
     [{
       branch: 'combatarms',
       description: "Combat arms (or fighting arms in non-American parlance) is a collective name for troops within national armed forces which participate in direct tactical ground combat. In general they include units that carry or employ a weapon system, such as infantry, cavalry, and artillery units. The use of multiple combat arms in mutually supporting ways is known as combined arms.",
-      occupation: "Combat Arms"
+      occupation: "Combat Arms",
     }];
 
   let aviationDescription =
@@ -125,6 +125,29 @@ function occupation() {
       currentQuestionIndex++;
       event.target.reset();
     } else {
+// <<<<<<< bml-pie-chart----if something breaks, undo me!
+// =======
+//       let branchLocalStorage = localStorage.getItem('clickTotal');
+//       if (branchLocalStorage === 'isArmy') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Army!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/Army.jpg');
+
+//       }
+//       if (branchLocalStorage === 'isMarines') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Marines!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/marine.jpg');
+//       }
+//       if (branchLocalStorage === 'isNavy') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Navy!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/navy.png');
+//       }
+
+//       if (branchLocalStorage === 'isAirforce') {
+//         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Airforce!';
+//         document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
+//       }
+
+// >>>>>>> dev
       let largestNumber = combatArmsCounter;
       if (largestNumber > aviationCounter) {
         // console.log('the job is combat arms');
@@ -149,9 +172,11 @@ function occupation() {
         let JsonString = JSON.stringify(specialForcesDescription);
         localStorage.setItem('userOccupation', JsonString);
       }
-      myForm.removeEventListener('submit', handleSubmit);
+
       document.getElementById('occupation').style.display = 'none';
       document.getElementById('summary').style.display = 'block';
+      renderAll();
+      myForm.removeEventListener('submit', handleSubmit);
     }
   }
 
