@@ -1,3 +1,4 @@
+'use strict';
 let totalClicks = 0;
 let clicksAllowed = 5;
 let marineClick = 0;
@@ -9,7 +10,6 @@ let imageOne = document.getElementById('imgOne');
 let imageTwo = document.getElementById('imgTwo');
 let imageThree = document.getElementById('imgThree');
 let imageFour = document.getElementById('imgFour');
-let myContainer = document.getElementById('img-container');
 
 function Photos(name, branch, fileExtensions = 'jpg') {
   this.name = name;
@@ -84,6 +84,7 @@ function handleClick(event) {
     airforceClick++;
   }
   if (totalClicks === clicksAllowed) {
+    document.getElementById('btn').style.display = 'block';
     imageOne.removeEventListener('click', handleClick);
     imageTwo.removeEventListener('click', handleClick);
     imageThree.removeEventListener('click', handleClick);
@@ -92,11 +93,12 @@ function handleClick(event) {
     localStorage.setItem('marines', marineClick);
     localStorage.setItem('navy', navyClick);
     localStorage.setItem('airforce', airforceClick);
+  } else {
+    renderedPhotos();
   }
-  renderedPhotos();
   let finalClickCount = armyClick;
 
-  if (totalClicks >= 4) {
+  if (totalClicks >= 5) {
     if (armyClick >= marineClick || armyClick >= airforceClick || armyClick >= navyClick) {
       localStorage.setItem('clickTotal', 'isArmy');
     }
@@ -129,7 +131,7 @@ let nextPage = document.getElementById('btn');
 nextPage.addEventListener('click', handleNextClick);
 
 function handleNextClick(event){
-  occupation();
   document.getElementById('occupation').style.display= 'block';
   document.getElementById('branch').style.display= 'none';
+  occupation();
 }

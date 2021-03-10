@@ -1,9 +1,6 @@
-
 'use strict';
 
 // global variables
-
-
 let allQuestions = [];
 let branchImages = [];
 let q1 = document.getElementById('question1');
@@ -89,12 +86,14 @@ function occupation() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (currentQuestionIndex <= totalRound) {
+    if (currentQuestionIndex <= 5) {
       renderQuestions(`question${currentQuestionIndex}`);
       currentQuestionIndex++;
       event.target.reset();
     } else {
       myForm.removeEventListener('submit', handleSubmit);
+      document.getElementById('occupation').style.display = 'none';
+      document.getElementById('summary').style.display = 'block';
 
       let branchLocalStorage = localStorage.getItem('clickTotal');
       if (branchLocalStorage === 'isArmy') {
@@ -140,81 +139,82 @@ function occupation() {
         // console.log('the job is SF');
         let JsonString = JSON.stringify(specialForcesDescription);
         localStorage.setItem('userOccupation', JsonString);
-
-        function handleSubmit(event) {
-          event.preventDefault();
-          if (currentQuestionIndex <= totalRound) {
-            renderQuestions(`question${currentQuestionIndex}`);
-            currentQuestionIndex++;
-            event.target.reset();
-          } else {
-            myForm.removeEventListener('submit', handleSubmit);
-          }
-        }
-
-        function handleChange(event) {
-          let value = event.target.value;
-          if (event.target.checked) {
-            if (value === 'combatArms') {
-              combatArmsCounter++;
-            } else if (value === 'aviation') {
-              aviationCounter++;
-            } else if (value === 'medical') {
-              medicalCounter++;
-            } else if (value === 'specialforces') {
-              specialForcesCounter++;
-            }
-          }
-          else {
-            if (value === 'combatArms') {
-              combatArmsCounter--;
-            } else if (value === 'aviation') {
-              aviationCounter--;
-            } else if (value === 'medical') {
-              medicalCounter--;
-            } else if (value === 'specialforces') {
-              specialForcesCounter--;
-            }
-          }
-          console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
-
-          if (currentQuestionIndex > 5) {
-
-            let largestNumber = combatArmsCounter;
-            if (largestNumber > aviationCounter) {
-              console.log('the job is combat arms');
-              localStorage.setItem('userOccupation', 'combatArms');
-            }
-            if (largestNumber < aviationCounter) {
-              largestNumber = aviationCounter;
-              console.log('the job is aviation');
-              localStorage.setItem('userOccupation', 'aviation');
-            }
-            if (largestNumber < medicalCounter) {
-              largestNumber = medicalCounter;
-              console.log('the job is a medic');
-              localStorage.setItem('userOccupation', 'medical');
-            }
-            if (largestNumber < specialForcesCounter) {
-              largestNumber = specialForcesCounter;
-              console.log('the job is SF');
-              localStorage.setItem('userOccupation', 'specialForces');
-            }
-
-          }
-        }
-
-        function renderQuestions(question) {
-          q1.textContent = allQuestions[0][question];
-          q2.textContent = allQuestions[1][question];
-          q3.textContent = allQuestions[2][question];
-          q4.textContent = allQuestions[3][question];
-        }
-
-        renderQuestions('question1');
-
-        // add event listener
-        myForm.addEventListener('submit', handleSubmit);
-        myForm.addEventListener('change', handleChange);
-      
       }
+    }
+  }
+        // function handleSubmit(event) {
+        //   event.preventDefault();
+        //   if (currentQuestionIndex <= totalRound) {
+        //     renderQuestions(`question${currentQuestionIndex}`);
+        //     currentQuestionIndex++;
+        //     event.target.reset();
+        //   } else {
+        //     myForm.removeEventListener('submit', handleSubmit);
+        //   }
+        // }
+
+  function handleChange(event) {
+    let value = event.target.value;
+    if (event.target.checked) {
+      if (value === 'combatArms') {
+        combatArmsCounter++;
+      } else if (value === 'aviation') {
+        aviationCounter++;
+      } else if (value === 'medical') {
+        medicalCounter++;
+      } else if (value === 'specialforces') {
+        specialForcesCounter++;
+      }
+    } else {
+      if (value === 'combatArms') {
+        combatArmsCounter--;
+      } else if (value === 'aviation') {
+        aviationCounter--;
+      } else if (value === 'medical') {
+        medicalCounter--;
+      } else if (value === 'specialforces') {
+        specialForcesCounter--;
+      }
+    }
+    console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
+
+    if (currentQuestionIndex > 5) {
+
+      let largestNumber = combatArmsCounter;
+      if (largestNumber > aviationCounter) {
+        console.log('the job is combat arms');
+        localStorage.setItem('userOccupation', 'combatArms');
+      }
+      if (largestNumber < aviationCounter) {
+        largestNumber = aviationCounter;
+        console.log('the job is aviation');
+        localStorage.setItem('userOccupation', 'aviation');
+      }
+      if (largestNumber < medicalCounter) {
+        largestNumber = medicalCounter;
+        console.log('the job is a medic');
+        localStorage.setItem('userOccupation', 'medical');
+      }
+      if (largestNumber < specialForcesCounter) {
+        largestNumber = specialForcesCounter;
+        console.log('the job is SF');
+        localStorage.setItem('userOccupation', 'specialForces');
+      }
+
+    }
+  }
+
+  function renderQuestions(question) {
+    q1.textContent = allQuestions[0][question];
+    q2.textContent = allQuestions[1][question];
+    q3.textContent = allQuestions[2][question];
+    q4.textContent = allQuestions[3][question];
+  }
+
+  renderQuestions('question1');
+
+  // add event listener
+  myForm.addEventListener('submit', handleSubmit);
+  myForm.addEventListener('change', handleChange);
+      
+}

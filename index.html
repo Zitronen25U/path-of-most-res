@@ -23,7 +23,6 @@
       <section id="branch" title="mycontainer">
         <!-- This section is for branch selection. -->
         <h2>Choose Your Favorite of the Pictures Below</h2>
-
         <div id="img-container">
           <section id="One">
             <img id="imgOne" height="300" width="400">
@@ -33,43 +32,38 @@
             <img id="imgThree" height="300" width="400">
             <img id="imgFour" height="300" width="400">
           </section>
-          <a href="#occupation" id="btn">Next Page</a>
+          <div id="btn">Next Page</div>
         </div>
       </section>
 
-
-    <section id="occupation">
-      <!-- This section is for occupation selection. -->
-      <h1 id= "branchDisplay"></h1>
-
-      <div><img id='branchImage' height="200" width="200"></div>
-
+      <section id="occupation">
+        <!-- This section is for occupation selection. -->
+        <h1 id= "branchDisplay"></h1>
+        <div><img id='branchImage' height="200" width="200"></div>
         <div id='quizHolder'>
           <h1></h1>
+          <form id='quiz'>
+            <input type="checkbox" id="q1" name='q1' value="combatArms">
+            <label id='question1'></label><br></br>
+
+            <input type="checkbox" id="q2" name='q2' value="aviation">
+            <label id='question2'></label><br></br>
+
+            <input type="checkbox" id="q3" name='q3' value="medical">
+            <label id='question3'></label><br></br>
 
 
-        <form id='quiz'>
-          <input type="checkbox" id="q1" name='q1' value="combatArms">
-          <label id='question1'></label><br></br>
+            <input type="checkbox" id='q4' name='q4' value="specialforces">
+            <label id='question4'></label><br></br>
 
-          <input type="checkbox" id="q2" name='q2' value="aviation">
-          <label id='question2'></label><br></br>
-
-          <input type="checkbox" id="q3" name='q3' value="medical">
-          <label id='question3'></label><br></br>
-
-
-          <input type="checkbox" id='q4' name='q4' value="specialforces">
-          <label id='question4'></label><br></br>
-
-          <input id= "subButton" type="submit" value="Submit">
+            <input id= "subButton" type="submit" value="Submit">
 
           </form>
         </div>
       </section>
 
 
-    <section id="summary">
+      <section id="summary">
         <h1></h1>
         <div class="branchpics">
           <p id="occupationphotos"></p>
@@ -94,9 +88,7 @@
           <div id="gearupbutton"> 
             <a href='shopping-cart.html'><button>Click Here for Gear</button></a>
           </div>
-
         </div>
-        <!-- Above this line -->
       </section>
     </div>
   </main>
