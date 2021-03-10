@@ -2,7 +2,9 @@
   margin-top: 3%;
   margin-left: 20%;
 }
-
+#myPieChart{
+  display: flex;
+}
 #quizHolder{
   margin-left: 33%;
   margin-top: 3%;

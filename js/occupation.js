@@ -12,6 +12,32 @@ let medicalCounter = 0;
 let specialForcesCounter = 0;
 
 function occupation() {
+
+  let totalArmyClick = +localStorage.getItem('army');
+  let totalMarineClick = +localStorage.getItem('marines');
+  let totalNavyClick = +localStorage.getItem('navy');
+  let totalAFClick = +localStorage.getItem('airforce');
+  var ctx = document.getElementById('myPieChart').getContext('2d');
+
+  let data = {
+    datasets: [{
+      data: [totalArmyClick, totalMarineClick, totalNavyClick, totalAFClick],
+      backgroundColor: ["#2ECC40", "#FF4136" ,"#0074D9", "#7FDBFF"],
+    }],
+    labels: [
+      'Total Army Clicks',
+      'Total Marine Clicks',
+      'Total Navy Clicks',
+      'Total Air Force Clicks'
+    ],
+  };
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+  });
+
+
   let combatArmsDescription =
     [{
       branch: 'combatarms',
