@@ -19,10 +19,10 @@ function Photos(name, branch, fileExtensions = 'jpg') {
   allPhotos.push(this);
 }
 
-let army = localStorage.getItem('army');
-let marines = localStorage.getItem('marines');
-let navy = localStorage.getItem('navy');
-let airforce = localStorage.getItem('airforce');
+// let army = localStorage.getItem('army');
+// let marines = localStorage.getItem('marines');
+// let navy = localStorage.getItem('navy');
+// let airforce = localStorage.getItem('airforce');
 
 new Photos('moppingarmy', 'army');
 new Photos('crayolapopsiclesmarinecorps', 'marine corps');
@@ -67,6 +67,18 @@ function renderedPhotos() {
   imageFour.title = fourProIndex.name;
   imageFour.branch = fourProIndex.branch;
 }
+
+// Timer reference: https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
+let timeleft = 10;
+let downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById('countdown').innerHTML = 'HURRY UP!';
+  } else {
+    document.getElementById('countdown').innerHTML = timeleft + 'seconds remaining';
+  }
+  timeleft -= 1;
+}, 1000);
 
 function handleClick(event) {
   console.log(totalClicks, clicksAllowed);
@@ -131,7 +143,8 @@ let nextPage = document.getElementById('btn');
 nextPage.addEventListener('click', handleNextClick);
 
 function handleNextClick(event){
-  document.getElementById('occupation').style.display= 'block';
-  document.getElementById('branch').style.display= 'none';
+  document.getElementById('occupation').style.display = 'block';
+  document.getElementById('branch').style.display = 'none';
+  document.getElementById('countdown').style.display = 'none';
   occupation();
 }
