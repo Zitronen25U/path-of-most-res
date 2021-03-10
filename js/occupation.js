@@ -33,7 +33,7 @@ function occupation() {
   };
 
   new Chart(ctx, {
-    type: 'doughnut',
+    type: 'pie',
     data: data,
   });
 
