@@ -2,7 +2,6 @@
 
 // global variables
 let allQuestions = [];
-let branchImages = [];
 let q1 = document.getElementById('question1');
 let q2 = document.getElementById('question2');
 let q3 = document.getElementById('question3');
@@ -74,14 +73,23 @@ function occupation() {
 
   // Renders
 
+  let branchLocalStorage = localStorage.getItem('clickTotal');
+  if (branchLocalStorage === 'isArmy') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Army!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/Army.jpg');
+  }
+  if (branchLocalStorage === 'isMarines') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Marines!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/marine.jpg');
+  }
+  if (branchLocalStorage === 'isNavy') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Navy!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/navy.png');
+  }
 
-  var retrieveResults = localStorage.getItem('branch');
-  let parsedResults = JSON.parse(retrieveResults);
-
-  function branchPicture() {
-    if (parsedResults === 'army');
-    document.getElementById('branchImage');
-
+  if (branchLocalStorage === 'isAirforce') {
+    document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Airforce!';
+    document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
   }
 
   function handleSubmit(event) {
@@ -91,31 +99,6 @@ function occupation() {
       currentQuestionIndex++;
       event.target.reset();
     } else {
-      myForm.removeEventListener('submit', handleSubmit);
-      document.getElementById('occupation').style.display = 'none';
-      document.getElementById('summary').style.display = 'block';
-
-      let branchLocalStorage = localStorage.getItem('clickTotal');
-      if (branchLocalStorage === 'isArmy') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Army!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/Army.jpg');
-
-      }
-      if (branchLocalStorage === 'isMarines') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Marines!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/marine.jpg');
-      }
-      if (branchLocalStorage === 'isNavy') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Navy!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/navy.png');
-      }
-
-      if (branchLocalStorage === 'isAirforce') {
-        document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Airforce!';
-        document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
-      }
-
-
       let largestNumber = combatArmsCounter;
       if (largestNumber > aviationCounter) {
         // console.log('the job is combat arms');
@@ -140,18 +123,11 @@ function occupation() {
         let JsonString = JSON.stringify(specialForcesDescription);
         localStorage.setItem('userOccupation', JsonString);
       }
+      myForm.removeEventListener('submit', handleSubmit);
+      document.getElementById('occupation').style.display = 'none';
+      document.getElementById('summary').style.display = 'block';
     }
   }
-        // function handleSubmit(event) {
-        //   event.preventDefault();
-        //   if (currentQuestionIndex <= totalRound) {
-        //     renderQuestions(`question${currentQuestionIndex}`);
-        //     currentQuestionIndex++;
-        //     event.target.reset();
-        //   } else {
-        //     myForm.removeEventListener('submit', handleSubmit);
-        //   }
-        // }
 
   function handleChange(event) {
     let value = event.target.value;
@@ -178,30 +154,6 @@ function occupation() {
     }
     console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
 
-    if (currentQuestionIndex > 5) {
-
-      let largestNumber = combatArmsCounter;
-      if (largestNumber > aviationCounter) {
-        console.log('the job is combat arms');
-        localStorage.setItem('userOccupation', 'combatArms');
-      }
-      if (largestNumber < aviationCounter) {
-        largestNumber = aviationCounter;
-        console.log('the job is aviation');
-        localStorage.setItem('userOccupation', 'aviation');
-      }
-      if (largestNumber < medicalCounter) {
-        largestNumber = medicalCounter;
-        console.log('the job is a medic');
-        localStorage.setItem('userOccupation', 'medical');
-      }
-      if (largestNumber < specialForcesCounter) {
-        largestNumber = specialForcesCounter;
-        console.log('the job is SF');
-        localStorage.setItem('userOccupation', 'specialForces');
-      }
-
-    }
   }
 
   function renderQuestions(question) {
@@ -215,6 +167,5 @@ function occupation() {
 
   // add event listener
   myForm.addEventListener('submit', handleSubmit);
-  myForm.addEventListener('change', handleChange);
-      
+  myForm.addEventListener('change', handleChange); 
 }
