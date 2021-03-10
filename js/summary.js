@@ -61,9 +61,7 @@ function addPFTStandards() {
   }
 }
 
-//Retrieving parsed User Occupation Data in Local Storage
-let userOccupation = window.localStorage.getItem('userOccupation');
-let parsedItem = JSON.parse(userOccupation);
+
 
 // Add User Occupation Title to the top of the Screen
 function addOccupationTitle() {
@@ -86,10 +84,31 @@ function addOccupationDescription() {
 }
 
 function renderAll() {
+  //Retrieving parsed User Occupation Data in Local Storage
+  let userOccupation = window.localStorage.getItem('userOccupation');
+  let parsedItem = JSON.parse(userOccupation);
+  console.log(parsedItem);
+  // Add User Occupation Title to the top of the Screen
+  function addOccupationTitle() {
+    let h1 = document.querySelector('#summary h1');
+    h1.innerHTML = `Your Occupation is: ${parsedItem[0].occupation}`
+  }
+
+  function addOccupationPicture() {
+    let p = document.getElementById('occupationphotos')
+    let img = `<img src="img/occupation/${parsedItem[0].branch}.jpg">`
+    p.innerHTML = img;
+  }
+
+  // Add Description of the Occupation to the DOM
+  function addOccupationDescription() {
+    let h2 = document.getElementById('occupationdescription');
+    let p = document.createElement('p');
+    p.textContent = parsedItem[0].description;
+    h2.appendChild(p);
+  }
   addOccupationTitle();
   addOccupationDescription();
   addOccupationPicture();
   addPFTStandards();
 }
-
-renderAll();
