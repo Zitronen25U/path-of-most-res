@@ -91,10 +91,6 @@ function occupation() {
       currentQuestionIndex++;
       event.target.reset();
     } else {
-      myForm.removeEventListener('submit', handleSubmit);
-      document.getElementById('occupation').style.display = 'none';
-      document.getElementById('summary').style.display = 'block';
-
       let branchLocalStorage = localStorage.getItem('clickTotal');
       if (branchLocalStorage === 'isArmy') {
         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Army!';
@@ -114,7 +110,6 @@ function occupation() {
         document.getElementById('branchDisplay').textContent = 'Your Branch Should be the Airforce!';
         document.getElementById('branchImage').setAttribute('src', 'img/branches/airforce.jpg');
       }
-
 
       let largestNumber = combatArmsCounter;
       if (largestNumber > aviationCounter) {
@@ -140,18 +135,13 @@ function occupation() {
         let JsonString = JSON.stringify(specialForcesDescription);
         localStorage.setItem('userOccupation', JsonString);
       }
+
+      document.getElementById('occupation').style.display = 'none';
+      document.getElementById('summary').style.display = 'block';
+      renderAll();
+      myForm.removeEventListener('submit', handleSubmit);
     }
   }
-        // function handleSubmit(event) {
-        //   event.preventDefault();
-        //   if (currentQuestionIndex <= totalRound) {
-        //     renderQuestions(`question${currentQuestionIndex}`);
-        //     currentQuestionIndex++;
-        //     event.target.reset();
-        //   } else {
-        //     myForm.removeEventListener('submit', handleSubmit);
-        //   }
-        // }
 
   function handleChange(event) {
     let value = event.target.value;
@@ -177,31 +167,6 @@ function occupation() {
       }
     }
     console.log(combatArmsCounter, aviationCounter, medicalCounter, specialForcesCounter);
-
-    if (currentQuestionIndex > 5) {
-
-      let largestNumber = combatArmsCounter;
-      if (largestNumber > aviationCounter) {
-        console.log('the job is combat arms');
-        localStorage.setItem('userOccupation', 'combatArms');
-      }
-      if (largestNumber < aviationCounter) {
-        largestNumber = aviationCounter;
-        console.log('the job is aviation');
-        localStorage.setItem('userOccupation', 'aviation');
-      }
-      if (largestNumber < medicalCounter) {
-        largestNumber = medicalCounter;
-        console.log('the job is a medic');
-        localStorage.setItem('userOccupation', 'medical');
-      }
-      if (largestNumber < specialForcesCounter) {
-        largestNumber = specialForcesCounter;
-        console.log('the job is SF');
-        localStorage.setItem('userOccupation', 'specialForces');
-      }
-
-    }
   }
 
   function renderQuestions(question) {
