@@ -47,11 +47,17 @@ input:last-child {
 }
 
 #btn{
-  text-align: center;
   font-size: 2em;
   font-style: italic;
+  margin-left: 43%;
 }
 
 #btn:hover{
   text-decoration: wavy;
+}
+
+#subButton{
+  margin-left: 25%;
+  padding: 10px;
+  border-radius: 10px;
 }
