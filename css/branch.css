@@ -39,6 +39,18 @@ section#branch {
   display: none;
 }
 
+#countdown{
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  background-color: rgb(28, 160, 236);
+  width: max-content;
+  padding: 18px;
+  margin: auto;
+  border-radius: 10px;
+  font-size: 30pt;
+}
+
 #btn:hover {
   background-color:green;
   cursor: pointer;

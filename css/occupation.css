@@ -1,8 +1,22 @@
 #branchImage{
   margin-top: 3%;
-  margin-left: 20%;
+  margin-left: 42.5%;
+}
+#chosenBranchReason{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-family: 'Black Ops One', cursive;
+}
+#myPieChart{
+ margin-bottom: 3%;
+ width: 1300px !important;
+ height: 700px !important;
+ margin-left: 16.5%;
 }
 
+#textBeforeQuiz{
+  font-family:'Black Ops One', cursive;;
+}
 #quizHolder{
   margin-left: 33%;
   margin-top: 3%;
@@ -28,8 +42,8 @@ input:last-child {
   margin-top: 0px;
   padding-top: 20px;
   font-size: 2em;
-  font-style: italic;
   text-align: center;
+  font-family: 'Black Ops One', cursive;
 }
 
 #btn{
