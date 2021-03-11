@@ -1,7 +1,6 @@
 'use strict';
 
 // global variables
-let branch = 'USA'; // this is from global variable
 let currentProduct = {};
 const allProducts = [];
 const usaProducts = [];
@@ -24,7 +23,7 @@ function Product(name, price, description, branch) {
 }
 
 Product.prototype.sortProduct = function() {
-	switch (this.branch) {
+	switch(this.branch) {
 		case 'USA':
 			usaProducts.push(this);
 			break;
@@ -43,6 +42,27 @@ Product.prototype.sortProduct = function() {
 }
 
 /*-------- helper functions --------------------------------------------------------*/
+// convert the data from local storage to the data format I needed
+function getBranchAbbr(branch) {
+	let result;
+	switch(branch) {
+		case 'isArmy':
+			result = 'USA';
+			break;
+		case 'isNavy':
+			result = 'USN';
+			break;
+		case 'isMarines':
+			result = 'USMC';
+			break;
+		case 'isAirforce':
+			result = 'USAF';
+			break;
+		default:
+			console.log('This will not happen!');
+	}
+	return result;
+}
 // render function for drop-down menu
 function renderDropdown(products) {
 	for (let product of products) {
@@ -201,9 +221,12 @@ new Product('usmc pt shorts 1 black', 20, 'Lorem ipsum dolor sit amet, consectet
 new Product('usmc pt shorts 1 green', 20, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'USMC');
 new Product('usmc shaker cup 1', 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'USMC');
 
-/*-------- Excutable codes ----------------------------------------------------------------------*/
+/*-------- Excutable code - render page ----------------------------------------------------------------------*/
 // only render branch related products out of all products
-switch (branch) {
+let branch = localStorage.getItem('clickTotal');
+// need to transform the data in the localStorage to the format I needed
+let branchAbbr = getBranchAbbr(localStorage.getItem('clickTotal'));
+switch(branchAbbr) {
 	case 'USA':
 		renderProductSection(usaProducts);
 		break;
@@ -219,6 +242,7 @@ switch (branch) {
 	default:
 		console.log('Should not be any errors.');
 }
+
 
 /*-------- Event Listener --------------------------------------------------------------------*/
 select.addEventListener('change', handleSelect);
