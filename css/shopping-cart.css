@@ -123,13 +123,14 @@ div#update-cart:hover {
   /* clear: right; */
   display: none;
   width: max-content;
-  background-color: orange;
   margin: auto;
   margin-top: 50px;
   text-align: center;
 }
 
 #cart-total h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -153,6 +154,10 @@ div#update-cart:hover {
   background-color: green;
 }
 
-footer {
-  
+#table-total {
+  width: 500px;
+}
+
+th {
+  font-weight: bold;
 }

@@ -2,6 +2,9 @@
 
 // global variables
 let currentProduct = {};
+let updatedQuantity = {};
+let updatingProduct = [];
+let updatingQuantity = [];
 const allProducts = [];
 const usaProducts = [];
 const usnProducts = [];
@@ -107,54 +110,89 @@ function renderTableHead() {
 	createTdOrTh('Price', tr);
 	createTdOrTh('Quantity', tr);
 	createTdOrTh('Total', tr);
-	
 	thead.appendChild(tr);
 }
 
-function renderTableRow() {
+function renderTableRow(product) {
 	const tbody = document.querySelector('tbody');
 	let tr = document.createElement('tr');
+
+	// first td in a table row - remove button
+	let tdButton = document.createElement('td');
+	let button = document.createElement('button');
+	button.textContent = 'X';
+	button.setAttribute('name', product.name);
+	tdButton.appendChild(button);
+	tr.appendChild(tdButton);
+	button.addEventListener('click', handleRemove);
+
+	function handleRemove(e) {
+		cart.deleteItem(e.target.name);
+		reRenderTableBody();
+		renderCartTotal();
+	}
 	
-	createTdOrTh('X', tr); // first td in a table row
-	
-	let tdImg = document.createElement('td'); // second td in a table row
+	// second td in a table row - image
+	let tdImg = document.createElement('td');
 	let img = document.createElement('img');
-	img.setAttribute('src', currentProduct.img);
-	img.setAttribute('alt', currentProduct.name);
+	img.setAttribute('src', product.img);
+	img.setAttribute('alt', product.name);
 	img.setAttribute('width', 40);
 	img.setAttribute('height', 40);
 	tdImg.appendChild(img);
 	tr.appendChild(tdImg);
 	
-	createTdOrTh(currentProduct.name, tr); // third td in a table row
+	createTdOrTh(product.name, tr); // third td in a table row - product
+	createTdOrTh(`$ ${product.price}`, tr); // fourth td in a table row - price
 
-	createTdOrTh(`$ ${currentProduct.price}`, tr); // fourth td in a table row
-
-	
-	let tdQuantity = document.createElement('td'); // fifth td in a table row
+	// fifth td in a table row - quantity
+	let tdQuantity = document.createElement('td');
 	let input = document.createElement('input');
 	input.setAttribute('type', 'number');
-	input.setAttribute('value', 1);
+	input.setAttribute('name', product.name);
+	input.setAttribute('value', product.quantity);
 	tdQuantity.appendChild(input);
 	tr.appendChild(tdQuantity);
 	
-	let total = parseInt(input.value) * currentProduct.price;
-
-	createTdOrTh(`$ ${total}`, tr); // sixth td in a table row
-
-
-	
+	// sixth td in a table row - total
+	let total = product.quantity * product.price;
+	createTdOrTh(`$ ${total}`, tr);
 	tbody.appendChild(tr);
 
-	//-------------
+	// monitor input field change
 	function handleChange(e) {
-		let updatedTotal = e.target.value * currentProduct.price;
-
-		console.log(updatedTotal);
-
-		
+		updatedQuantity[e.target.name] = e.target.value;
 	}
 	input.addEventListener('change', handleChange);
+}
+
+function reRenderTableBody() {
+	cart.items = JSON.parse(localStorage.getItem('cart'));
+	clearCart();
+	for (let item of cart.items) {
+		renderTableRow(item);
+	}
+}
+
+function clearCart() {
+	let tbody = document.querySelector('tbody');
+	while(tbody.firstChild) {
+		tbody.removeChild(tbody.firstChild);
+	}
+}
+
+function renderCartTotal() {
+	let subtotal = document.getElementById('subtotal');
+	let tax = document.getElementById('tax');
+	let total = document.getElementById('total');
+	let cart = JSON.parse(localStorage.getItem('cart'));
+	let subTotal = 0;
+	for (let item of cart) {
+		subTotal += (+item.price * +item.quantity);
+	}
+	subtotal.textContent = subTotal;
+	tax.textContent = (subTotal * 0.1).toFixed(2);
+	total.textContent = (subTotal * 1.1).toFixed(2);
 }
 
 /*-------- functions and event handlers --------------------------------------------------------*/
@@ -181,18 +219,23 @@ function handleSelect(e) {
 // event handler for clicking the 'add to cart' button -> will render a table upon click
 function handleAdd(e) { // render a table upon clicking the "Add To Cart" button
 	document.getElementById('table').style.display = 'block';
-
 	document.getElementById('cart-total').style.display = 'block';
 
 	if (!document.querySelector('thead').children.length) { // only render table head when it is not exist
 		renderTableHead();
 	}
-	renderTableRow();
+	cart.addItem(currentProduct);
+	reRenderTableBody();
+	renderCartTotal();
 }
 
 // handle to update the cart
 function handleUpdate(e) {
-	console.log(e.target);
+	for (let name in updatedQuantity) { // sample updatedQuantity: {usmc fitness book: "20", usmc pt shirt 1: "9"}
+		cart.updateCart(name, +updatedQuantity[name])
+	}
+	reRenderTableBody();
+	renderCartTotal();
 }
 
 /* -------------- Instantiate 24 products ---------------------------------------------------------*/
@@ -249,17 +292,49 @@ select.addEventListener('change', handleSelect);
 addToCart.addEventListener('click', handleAdd);
 updateCart.addEventListener('click', handleUpdate);
 
-// Temp code holding place for cart
+// Temp code holding place for cart-------------------------------------------------------
 function Cart(items) {
 	this.items = items;
 }
 
-let cart = new Cart([]);
-
-Cart.prototype.addItem = function(currentProduct) {
+Cart.prototype.addItem = function(product) {
+	let isSameProduct = false;
 	for(let item of this.items) {
-		if (item.name === currentProduct.name) {
-			
+		if (item.name === product.name) {
+			item.quantity++;
+			isSameProduct = true;
+			break;
 		}
 	}
+	if (!isSameProduct) {
+		let item = product;
+		item.quantity = 1;
+		this.items.push(item);
+	}
+	localStorage.setItem('cart', JSON.stringify(this.items));
+}
+
+Cart.prototype.updateCart = function(product, quantity) {
+	for (let item of this.items) {
+		if (item.name === product) {
+			item.quantity = quantity;
+			break;
+		}
+	}
+	localStorage.setItem('cart', JSON.stringify(this.items));
+}
+
+Cart.prototype.deleteItem = function(product) {
+	for (let i = 0; i < this.items.length; i++) {
+		if (this.items[i].name === product) {
+			this.items.splice(i, 1);
+			break;
+		}
+	}
+	localStorage.setItem('cart', JSON.stringify(this.items));
+}
+
+let cart = new Cart([]);
+if (localStorage.getItem('cart')) {
+	cart.items = JSON.parse(localStorage.getItem('cart'));
 }
